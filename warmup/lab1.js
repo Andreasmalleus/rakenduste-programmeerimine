@@ -24,11 +24,14 @@ const reverseString = word => word.split("").reverse().join("");
  */
 const generateRandomItemList = n => {
 
-    let letters = "abcdefghijklmnopqrstuvxzyõäüö";
+    let aplhabet = "abcdefghjklmnopqrstuvxzyõüöä";
+    let letterList = aplhabet.split("");
     let list = [];
     for(let i = 0; i < n; i++){
         const item = {
-            name = letters[Math.floor(Math.random() * letters.length)] * 5 + getRandomIntInclusive(1, 100000)
+            //name : letterList[Math.round(Math.random() * letterList.length)]
+            name : letterList[getRandomIntInclusive(0, letterList.length)] + getRandomIntInclusive(1, 100000),
+            cost : getRandomIntInclusive(1,1000)
 
         };
         list.push(item);
@@ -49,12 +52,13 @@ function getRandomIntInclusive(min, max) {
  * Task 4
  */
 const findMostExpensiveItem = items => {
-    var max = items[0];
-    for(var i = 0; i < items.length; i++){
-        if(max < items[i]){
-            max = items[i];
+    var max = items.cost;
+    for(var i = 0; i < items.cost.length; i++){
+        if(max < items.cost){
+            max = items.cost;
         }
     }
+    console.log(max);
     return max;
 };
 
@@ -62,10 +66,10 @@ const findMostExpensiveItem = items => {
  * Task 5
  */
 const findCheapestItem = items => {
-    var min = items[0];
+    var min = items.cost;
     for(var i = 0; i < items.length; i++){
-        if(min > items[i]){
-            min = items[i];
+        if(min > items.cost){
+            min = items.cost;
         }
     }
     return min;
@@ -150,7 +154,7 @@ catch(e){
   console.log("FAIL");
 }
 
-console.log("\nTest findMostExpensiveItem");
+console.log("\nTest findCheapestItem");
 const items2 = generateRandomItemList(30)
 try{
   test(findCheapestItem(items2).cost, findLowest(items2))
