@@ -9,4 +9,6 @@ app.get('/', (req, res) => {
 
 app.use(express.static('static'));
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => {
+    console.log(`Our app is running on port ${ port }`);
+});
