@@ -3,19 +3,9 @@
         <head>
                 <title>Item page</title>
                 <link href="style.css" rel="stylesheet">
+                <script src="item.js"></script>
 
-                <script type="text/javascript">
-                    //alert();
-                    //const x = window.location;
-                    //console.log(x);
-                    var urlParams = new URLSearchParams(window.location.search);
-                    const title = urlParams.get('title');
-                    const price = urlParams.get('price');
-                    const source = urlParams.get('src')
-                    alert("Title " + title + "\nPrice " + price + "\nSource " + source);
-                    const goback = () => window.history.back();
-
-                </script>
+                <script type="text/javascript"></script>
 
         </head>
         <body>
@@ -28,8 +18,10 @@
                     <div class="buttons">
                         <button id="loginSignupButton">Login/Signup</button>
                         <button id="cartButton">Cart</button>
-                        <button id="Back" onclick="goback()">Back to mainpage</button>
                     </div>
+                </div>
+                <div class="content" id="container">
+
                 </div>
 
         </body>
