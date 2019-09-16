@@ -31,20 +31,19 @@ button {
 .content {
     display: flex;
     text-align: center;
+    flex-wrap: wrap;
 }
 .item {
-    padding: 10px;
-
-
+    padding: 5px;
 
 }
 .item_name{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
+    font-size: 15px;
 }
 .item_price{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .item_img{
@@ -62,4 +61,10 @@ button {
 .container{
     padding: 50px;
     text-align: center;
+}
+.footer{
+    text-align: center;
+    padding: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
 }
