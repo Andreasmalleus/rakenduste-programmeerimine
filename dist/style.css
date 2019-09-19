@@ -16,6 +16,8 @@ body {
     justify-content: space-between;
     display: flex;
     background-color: #F4F4F6;
+    position: sticky;
+    top: 0;
 }
 button {
     text-align: center;
@@ -46,6 +48,8 @@ button {
     display: flex;
     text-align: center;
     flex-wrap: wrap;
+    width: 1000px;
+    margin: 0 auto;
 }
 .item {
     padding: 5px;
@@ -74,7 +78,7 @@ button {
     border: 5px solid lightgray;
     border-radius: 25px;
 }
-.container{
+#container{
     padding: 50px;
     text-align: center;
 }
