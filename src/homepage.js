@@ -19,7 +19,7 @@ function createItems(category){
     root.innerHTML = null;
     if(category == "new clothes"){
         items = new_clothes;
-    }else if(category == "shoes"){
+    }if(category == "shoes"){
         items = shoes;
     }else if(category == "hoodies"){
         items = hoodies;

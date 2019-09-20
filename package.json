@@ -4,7 +4,7 @@
   "scripts": {
     "build": "webpack",
     "start": "node server.js",
-    "start:dev" : "npm run build && npm run start"
+    "start:dev": "npm run build && npm run start"
   },
   "dependencies": {
     "express": "^4.17.1"

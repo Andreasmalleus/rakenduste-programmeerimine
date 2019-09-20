@@ -126,7 +126,7 @@ function createItems(category){
     root.innerHTML = null;
     if(category == "new clothes"){
         items = new_clothes;
-    }else if(category == "shoes"){
+    }if(category == "shoes"){
         items = shoes;
     }else if(category == "hoodies"){
         items = hoodies;
@@ -158,8 +158,9 @@ module.exports = {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
+const itempage = __webpack_require__(3);
 //item.html?title=stussy-bait-tee&price=70&src=Images/stussy-bait-tee-blk-2.jpg
 function createItemElements(item){
     const a = document.createElement("a");
@@ -185,7 +186,6 @@ function createItemElements(item){
     return a;
 
 }
-
 
 module.exports = {
     createItemElements
@@ -221,9 +221,9 @@ function setup(){
 
     const container = document.getElementById('container');
     if(!container) return;
-        container.appendChild(img);
-        container.appendChild(titleh1);
-        container.appendChild(priceh2);
+    container.appendChild(img);
+    container.appendChild(titleh1);
+    container.appendChild(priceh2);
 
 }
 
