@@ -17,11 +17,11 @@ function createItems(category){
     const root = document.getElementById("item_content");
     var items = new_clothes;
     root.innerHTML = null;
-    if(category == "new clothes"){
+    if(category == "Uus kaup"){
         items = new_clothes;
-    }else if(category == "shoes"){
+    }else if(category == "Jalatsid"){
         items = shoes;
-    }else if(category == "hoodies"){
+    }else if(category == "Pusad"){
         items = hoodies;
     }
     items.forEach((item)=>{
