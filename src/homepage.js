@@ -11,6 +11,7 @@ function dropDownListener(){
         createItems(event.target.value);
         console.log(event.target.value);
     })
+
 }
 
 function createItems(category){

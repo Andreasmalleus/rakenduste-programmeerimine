@@ -11,4 +11,5 @@ app.use(express.static('dist'));
 
 app.listen(port, () => {
     console.log(`Our app is running on port ${ port }`);
+    console.log(`http://localhost:${ port }`);
 });
