@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode : "production",
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -26,7 +26,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/, //tells webpack compiler that when it comes by js files it will use babel loader to transform it first
+        test: /\.js|jsx$/, //tells webpack compiler that when it comes by js files it will use babel loader to transform it first
         exclude: /node_modules/,//exclude node_modules from transforming
         use: {
           loader: "babel-loader",
