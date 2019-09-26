@@ -20,7 +20,9 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 8080,
-    open: true //broswer opens
+    open: true, //broswer opens
+
+
   }, 
   //adding babel to compile our js to be more compatible with browsers that support older js versions
   module: {
