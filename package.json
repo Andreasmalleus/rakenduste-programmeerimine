@@ -4,7 +4,11 @@
   "scripts": {
     "build": "webpack",
     "start": "node server.js",
+<<<<<<< HEAD
     "start:dev": "webpack-dev-server"
+=======
+    "start:dev": "npm run build && npm run start"
+>>>>>>> 280ebcd50206fc7caecbb7bcd7cf7e19252cf874
   },
   "dependencies": {
     "express": "^4.17.1",

@@ -19,7 +19,11 @@ function createItems(category){
     root.innerHTML = null;
     if(category == "Uus kaup"){
         items = new_clothes;
+<<<<<<< HEAD
     }else if(category == "Jalatsid"){
+=======
+    }if(category == "shoes"){
+>>>>>>> 280ebcd50206fc7caecbb7bcd7cf7e19252cf874
         items = shoes;
     }else if(category == "Pusad"){
         items = hoodies;
