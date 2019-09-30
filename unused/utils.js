@@ -1,4 +1,4 @@
-const itempage = require('./itempage.js');
+const itempage = require('../src/itempage.jsx');
 //item.html?title=stussy-bait-tee&price=70&src=Images/stussy-bait-tee-blk-2.jpg
 function createItemElements(item){
     const a = document.createElement("a");

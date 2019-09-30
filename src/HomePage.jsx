@@ -1,10 +1,9 @@
 import React from "react";
-import ReactDom from "react-dom";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import ItemList from "./ItemList.jsx";
-import ItemPage from "./ItemPage.jsx";
-import {new_clothes, hoodies, shoes} from "./database.js";
+//import {newClothesReede, hoodiesReede, shoesReede} from "./database.js";
+import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
 
 
 
@@ -12,50 +11,50 @@ class HomePage extends React.PureComponent {
     constructor(props){
         super(props);
         this.state = {
-            items : new_clothes
-        }
+            items : newClothesEnd
+        };
     }
     handleChange(event){
         switch(event.target.value){
-            case "Uus kaup":{
+            case "New Clothes":{
                 this.setState({
-                    items: new_clothes
+                    items: newClothesEnd
                 });
                 break;
             }
-            case "Jalatsid":{
+            case "Shoes":{
                     this.setState({
-                        items: shoes
+                        items: shoesEND
                     });
                     break;
                 }
-            case "Pusad":{
+            case "Hoodies":{
                     this.setState({
-                        items: hoodies
+                        items: hoodiesEnd
                     });
                     console.log(event.target.value);
                     break;
                 }
         }
         console.log(event.target.value);
-    };
+    }
     render(){
     return (
         <>
         <Header />
         <div className={"catagory-view"}>
-        <label for="category-select">Choose category</label>
-            <select onChange={this.handleChange.bind(this)} class="category-select">
+        <label className={"categoryText"} htmlFor="category-select">Choose category</label>
+            <select onChange={this.handleChange.bind(this)} className="category-select">
                 <option value={""}>Please choose an option</option>
-                <option value={"Uus kaup"}>New clothes</option>
-                <option value={"Jalatsid"}>Shoes</option>
-                <option value={"Pusad"}>Hoodies</option>
+                <option value={"New Clothes"}>New clothes</option>
+                <option value={"Shoes"}>Shoes</option>
+                <option value={"Hoodies"}>Hoodies</option>
             </select>
         </div>
         <ItemList new_items={this.state.items}/>
         <Footer />
         </>
-    )
+    );
     }
 }
 

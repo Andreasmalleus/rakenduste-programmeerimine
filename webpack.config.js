@@ -28,13 +28,25 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce : "pre",
         test: /\.js|jsx$/, //tells webpack compiler that when it comes by js files it will use babel loader to transform it first
         exclude: /node_modules/,//exclude node_modules from transforming
-        use: {
-          loader: "babel-loader",
-        }
-      }
-    ]
+        loader : 'eslint-loader',
+        options: {
+          //if necessary
+        },
+
+
+      },
+      {
+        test: /\.js|jsx$/,
+        exclude : /node_modules/,
+        loader : 'babel-loader',
+        options: {
+          //if necessary
+        },
+      },
+    ],
   },
 
 

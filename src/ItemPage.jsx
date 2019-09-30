@@ -1,30 +1,36 @@
 import React from "react";
 import Footer from "./Footer.jsx";
 import Header from "./Header.jsx";
-import {new_clothes, hoodies, shoes} from "./database.js";
+import PropTypes from "prop-types";
+//import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
 
-const DisplayedItem = () => {
 
-        return(
-            <div id={"container"}>
-                <img src="" className="item_page_img"></img>
-                <h1 className="item_title"></h1>
-                <h1 className="item_price"></h1>
-            </div>
-        )
-        
-}
 
 class ItemPage extends React.PureComponent{
     render(){
         return (
         <>
             <Header/>
-                <DisplayedItem />
+            <div id={"container"}>
+                <img src={this.props.location.src} className="item_page_img"></img>
+                <h1 className="item_title">{this.props.location.title}</h1>
+                <h1 className="item_price">{this.props.location.price}</h1>
+            </div>
             <Footer/>
         </>
-        )
+        );
     }
 }
+
+ItemPage.propTypes = {
+
+    location : PropTypes.string,
+    src : PropTypes.string,
+    title : PropTypes.string,
+    price : PropTypes.string
+
+};
+
+
 
 export default ItemPage;

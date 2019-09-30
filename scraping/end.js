@@ -17,18 +17,20 @@
         const title = item.getElementsByClassName(nameClass)[0].children[0].textContent;
         const price = item.getElementsByClassName(priceClass)[0].textContent;
 
-
-        arr.push = ({
-            imgSrc : img,
-            title,
-            price,
-            category : document.title
-        })
+        console.log(img);
+        if(img != undefined){
+            arr.push({
+                imgSrc : img,
+                title,
+                price,
+                category : document.title
+            })
+        }
 
 
     });
 
-    console.log(arr.length);
+    console.log(JSON.stringify(arr));
 
 
 }

@@ -1,0 +1,32 @@
+{
+    "rules" : {
+        "semi" : ["error" , "always"],
+        "quotes" : ["error", "double"]
+    },
+    "parser": "babel-eslint",
+    "parserOptions" : {
+        "ecmaVersion" : 2019,
+        "sourceType" : "module"
+    },
+    "extends" : [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "settings" : {
+        "react" : {
+            "version" : "detect"
+        }
+    },
+    "env" : {
+        "browser" : true,
+        "node" : true
+        //keskonna seadistus, et leiaks ülesse require, module ja document
+    }
+
+}
+
+/*reeglid
+//off = 0
+//warn = 1
+error  = 2*/
+//eslint cant parse react code without an external plugin
