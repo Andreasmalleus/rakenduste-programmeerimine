@@ -29,7 +29,7 @@ app.get("/api/items/:itemId",cors(),(req,res) =>{
 })
 
 app.get('/items/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "...dist", "index.html"));
+    res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 })
 
 
