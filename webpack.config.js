@@ -17,12 +17,18 @@ module.exports = {
   ],
   //devserver library that opens immediately
   devServer : {
+    historyApiFallback : true,
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 8080,
     open: true, //broswer opens
-
-
+    //use proxy to get rid of cors
+    proxy : {
+      "/api" : {
+        target : 'https://localhost:3000'
+      }
+      
+    }
   }, 
   //adding babel to compile our js to be more compatible with browsers that support older js versions
   module: {

@@ -7,13 +7,14 @@ const ItemList = (props) => {//komponent
         <div className={"content"} id={"item_content"}>
             {
                 //map creates a new array
-                props.new_items.map((clothing,index) => {
+                props.items.map((clothing) => {
                     return <Item 
                         //kui mapid või võtad listist midagi siis tuleb alati panna juurde key
-                        key = {index}
+                        key = {clothing.id}
+                        id = {clothing.id}
                         src = {clothing.imgSrc}
                         price = {clothing.price}
-                        name = {clothing.title}
+                        title = {clothing.title}
 
                     />;
                 })
@@ -26,7 +27,7 @@ const ItemList = (props) => {//komponent
 
 
 
-const Item = (props) => {//kutsutakse seda komponendiks
+/*const Item = (props) => {//kutsutakse seda komponendiks
 
     //pass information via link with an object
     const itemInformation = {
@@ -45,7 +46,19 @@ const Item = (props) => {//kutsutakse seda komponendiks
             <div className="item_price">{props.price}</div>
         </div>
     </Link>
-    );
+    );``
+};*/
+
+const Item = (props) => {
+    return (
+        <Link to={`/items/${props.id}`} >
+            <div className="item">
+                <img srcSet={props.src} className="item_img"></img>
+                <div className="item_name">{props.title}</div>
+                <div className="item_price">{props.price}</div>
+            </div>
+        </Link>
+        );
 };
 
 //prototypes for validation
@@ -53,11 +66,12 @@ Item.propTypes = {
     src : PropTypes.string,
     title : PropTypes.string,
     price : PropTypes.string,
-    new_items : PropTypes.array
+    items : PropTypes.array,
+    id : PropTypes.string
 };
 
 ItemList.propTypes = {
-    new_items : PropTypes.array
+    items : PropTypes.array
 };
 
 

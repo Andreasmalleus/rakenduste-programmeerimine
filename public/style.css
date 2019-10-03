@@ -45,7 +45,7 @@ button {
     display: flex;
     text-align: center;
     flex-wrap: wrap;
-    width: 1000px;
+    width: 1300px;
     margin: 0 auto;
     
 }
@@ -60,10 +60,25 @@ button {
     color: black;
     text-overflow: ellipsis;
 }
+
+.item_page_name{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: black;
+    text-overflow: ellipsis;
+}
 .item_price{
     text-decoration: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 15px;
+    color: black;
+    text-overflow: ellipsis;
+}
+
+.item_page_price{
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
     color: black;
     text-overflow: ellipsis;
 }

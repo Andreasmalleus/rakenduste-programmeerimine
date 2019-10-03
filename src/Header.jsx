@@ -7,7 +7,7 @@ const Header = () => {
         <div className={"heading"}>
         <Link to= {"/"}>
             <div className={"logo"}>
-                <img srcSet="Images/logo.jpg"></img>
+                <img srcSet="/Images/logo.jpg"></img>
             </div>
         </Link>
             <div className={"buttons"}>
