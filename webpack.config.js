@@ -37,7 +37,7 @@ module.exports = {
         enforce : "pre",
         test: /\.js|jsx$/, //tells webpack compiler that when it comes by js files it will use babel loader to transform it first
         exclude: /node_modules/,//exclude node_modules from transforming
-        loader : 'eslint-loader',
+        use : 'eslint-loader',
         options: {
           //if necessary
         },
@@ -52,6 +52,7 @@ module.exports = {
           //if necessary
         },
       },
+
     ],
   },
 
