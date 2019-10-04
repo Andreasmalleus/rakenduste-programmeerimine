@@ -1,7 +1,7 @@
 # Rakenduste-programmeerimine
-https://mysterious-hollows-06344.herokuapp.com/
+- https://mysterious-hollows-06344.herokuapp.com/
 
-Funktsionaalsed nõuded
+- Funktsionaalsed nõuded
 1.Esilehel kuvatatakse tooteid
 2.Tootelehe vaatamine
 3.Toodete filtreerimine
