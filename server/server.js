@@ -16,7 +16,7 @@ const DataBase = require('./newDatabase.js');
 //app.use(cors());
 //app.get("/api/items",cors(),(req,res);
 
-app.get("/api/items",cors(), (req,res) => {
+app.get("/api/items", (req,res) => {
     res.json(DataBase.getItems());
 });
 
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
-app.get("/api/items/:itemId",cors(),(req,res) =>{
+app.get("/api/items/:itemId",(req,res) =>{
     res.send(DataBase.getItem(req.params.itemId));
 })
 
