@@ -14,3 +14,25 @@
     font-size: 15px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.categoryNew:hover{
+    transform: scale(1.05);
+}
+.categoryNew{
+    transition: transform .25s ease;
+}
+
+.categoryShoes:hover{
+    transform: scale(1.05);
+}
+.categoryShoes{
+    transition: transform .25s ease;
+}
+
+.categoryShirts:hover{
+    transform: scale(1.05);
+}
+.categoryShirts{
+    transition: transform .25s ease;
+}
+

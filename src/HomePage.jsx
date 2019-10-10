@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
-import ItemList from "./ItemList.jsx";
+import ItemLists from "./ItemLists.jsx";
 import CategoryView from "./CategoryView.jsx";
 import SortDropdown from "./SortDropdown.jsx";
 //import {newClothesReede, hoodiesReede, shoesReede} from "./database.js";
@@ -80,7 +80,7 @@ class HomePage extends React.PureComponent {
         <Header />
         <SortDropdown onChange={this.handleSortDropdown}/>
         <CategoryView onChange={this.handleCategory} itemsLen={this.showItemCount()}/>
-        <ItemList items={this.setVisibleItems()}/>
+        <ItemLists items={this.setVisibleItems()}/>
         <Footer />
         </>
     );

@@ -56,7 +56,7 @@ ItemPage.propTypes = {
     match : PropTypes.object.isRequired,
     src : PropTypes.string,
     title : PropTypes.string,
-    price : PropTypes.int
+    price : PropTypes.number
 
 };
 

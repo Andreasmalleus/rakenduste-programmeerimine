@@ -1,6 +1,6 @@
 import React from "react";
 import { shoeIcon, newIcon, shirtIcon } from "./icons";
-import "../public/css/categoryView.css";
+import "../public/css/categoryview.css";
 import propTypes from "prop-types";
 //import HomePage from "./HomePage.jsx";
 
@@ -29,7 +29,8 @@ render(){
 }
 
 CategoryView.propTypes = {
-    onChange : propTypes.func
+    onChange : propTypes.func,
+    itemsLen : propTypes.number
 };
 
 export default CategoryView;

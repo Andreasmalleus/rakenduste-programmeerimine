@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const ItemList = (props) => {//komponent
+const ItemLists = (props) => {//komponent
     return (
         <div className={"content"} id={"item_content"}>
             {
@@ -42,14 +42,14 @@ const Item = (props) => {
 Item.propTypes = {
     src : PropTypes.string,
     title : PropTypes.string,
-    price : PropTypes.int,
+    price : PropTypes.number,
     items : PropTypes.array,
     id : PropTypes.string
 };
 
-ItemList.propTypes = {
+ItemLists.propTypes = {
     items : PropTypes.array
 };
 
 
-export default ItemList;
+export default ItemLists;

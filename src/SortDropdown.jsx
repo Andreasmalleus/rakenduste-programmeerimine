@@ -1,6 +1,6 @@
 import React from "react";
 import "../public/css/sortdropdown.css";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const SortDropdown = (props) => {
     return (
@@ -23,8 +23,8 @@ const SortDropdown = (props) => {
     );
 };
 
-SortDropdown.PropTypes = {
-    onChange : propTypes.func
+SortDropdown.propTypes = {
+    onChange : PropTypes.func
         
     
 };
