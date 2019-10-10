@@ -11,6 +11,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "i": "^0.3.6",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.1.0"
@@ -30,6 +31,7 @@
     "eslint-loader": "^3.0.2",
     "eslint-plugin-react": "^7.14.3",
     "prop-types": "^15.7.2",
+    "style-loader": "^1.0.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1"

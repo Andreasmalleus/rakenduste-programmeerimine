@@ -1,0 +1,43 @@
+.logo img{
+    height: 100px;
+    width: 200px;
+    margin: 25px;
+
+}
+
+.heading {
+    padding: 20px;
+    width: 98%;
+    height: 150px;
+    justify-content: space-between;
+    display: flex;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 25px;
+    position: sticky;
+    top: 0;
+}
+
+.headerButtons {
+    display: flex;
+    margin: 100px;
+    text-align: center;
+    width: 100px;
+
+
+}
+.headerButtonText{
+    display: block;
+    width: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    font-size: 20px;
+    text-align: center;
+}
+.headerButton{
+    width: 120px;
+}
+
+
+.headerButtonIcon{
+    width: 30px;
+}

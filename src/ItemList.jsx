@@ -26,36 +26,13 @@ const ItemList = (props) => {//komponent
 };
 
 
-
-/*const Item = (props) => {//kutsutakse seda komponendiks
-
-    //pass information via link with an object
-    const itemInformation = {
-        pathname : "/item",
-        src : props.src,
-        title : props.title,
-        price : props.price
-
-    };
-
-    return (
-    <Link to={itemInformation} >
-        <div className="item">
-            <img srcSet={props.src} className="item_img"></img>
-            <div className="item_name">{props.title}</div>
-            <div className="item_price">{props.price}</div>
-        </div>
-    </Link>
-    );``
-};*/
-
 const Item = (props) => {
     return (
-        <Link to={`/items/${props.id}`} >
+        <Link to={`/Home/items/${props.id}`} >
             <div className="item">
-                <img srcSet={props.src} className="item_img"></img>
-                <div className="item_name">{props.title}</div>
-                <div className="item_price">{props.price}</div>
+                <img srcSet={props.src} className="item-img"></img>
+                <div className="item-name">{props.title}</div>
+                <div className="item-price">{props.price + " $"}</div>
             </div>
         </Link>
         );
@@ -65,7 +42,7 @@ const Item = (props) => {
 Item.propTypes = {
     src : PropTypes.string,
     title : PropTypes.string,
-    price : PropTypes.string,
+    price : PropTypes.int,
     items : PropTypes.array,
     id : PropTypes.string
 };

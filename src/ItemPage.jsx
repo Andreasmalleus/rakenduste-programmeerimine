@@ -40,9 +40,9 @@ class ItemPage extends React.PureComponent{
         <>
             <Header/>
             <div id={"container"}>
-                <img src={this.state.imgSrc} className="item_page_img"></img>
-                <h1 className="item_page_name">{this.state.title}</h1>
-                <h1 className="item_page_price">{this.state.price}</h1>
+                <img src={this.state.imgSrc} className="itemPage-img"></img>
+                <h1 className="itemPage-name">{this.state.title}</h1>
+                <h1 className="itemPage-price">{this.state.price + " $"}</h1>
             </div>
             <Footer/>
         </>
@@ -56,7 +56,7 @@ ItemPage.propTypes = {
     match : PropTypes.object.isRequired,
     src : PropTypes.string,
     title : PropTypes.string,
-    price : PropTypes.string
+    price : PropTypes.int
 
 };
 

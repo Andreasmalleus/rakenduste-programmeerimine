@@ -2,6 +2,8 @@ import React from "react";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import ItemList from "./ItemList.jsx";
+import CategoryView from "./CategoryView.jsx";
+import SortDropdown from "./SortDropdown.jsx";
 //import {newClothesReede, hoodiesReede, shoesReede} from "./database.js";
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
 
@@ -12,10 +14,12 @@ class HomePage extends React.PureComponent {
         super(props);
         this.state = {
             items : [],
-            selectedCategory : "New This Week | END."
+            selectedCategory : "New This Week | END.",
+            sortDirection : -1
         };
     }
 
+    
     componentDidMount(){
             this.fetchItems();
         }
@@ -35,38 +39,52 @@ class HomePage extends React.PureComponent {
         .catch(err => {
             console.log("err", err);
         });
+        
 
+    }
+
+    //handle need to be in parent
+    handleCategory = (value) =>{
+        //console.log(value);
+        this.setState({
+            selectedCategory : value
+        });       
+    };
+
+    handleSortDropdown = (value) => {
+        //console.log(value);
+        this.setState({
+            sortDirection : value
+        });
     }
 
     setVisibleItems =() => {
-        return this.state.items.filter(item => item.category === this.state.selectedCategory);
-    }
-
-    handleDropDown(event){
-        console.log(event.target.value);
-        this.setState({
-            selectedCategory : event.target.value
+        return this.state.items
+        .filter(item => item.category === this.state.selectedCategory)
+        .sort((a,b) => {
+            switch(this.state.sortDirection){
+                case -1: return b.price - a.price;
+                case 1: return a.price - b.price;
+            }
         });
-
     }
+
+    showItemCount = () => {
+        return this.state.items.filter(item => item.category == this.state.selectedCategory).length;
+    }
+
 
     render(){
     return (
         <>
         <Header />
-        <div className={"catagory-view"}>
-        <label className={"categoryText"} htmlFor="category-select">Choose category</label>
-            <select onChange={this.handleDropDown.bind(this)} className="category-select">
-                <option value={""}>Please choose an option</option>
-                <option value={"New This Week | END."}>New clothes</option>
-                <option value={"Sneakers | END."}>Shoes</option>
-                <option value={"Sweats | END."}>Hoodies</option>
-            </select>
-        </div>
+        <SortDropdown onChange={this.handleSortDropdown}/>
+        <CategoryView onChange={this.handleCategory} itemsLen={this.showItemCount()}/>
         <ItemList items={this.setVisibleItems()}/>
         <Footer />
         </>
     );
+    //sending event hande as prop
     }
 }
 
