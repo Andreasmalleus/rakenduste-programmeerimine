@@ -3,7 +3,7 @@ const router = express();
 const db = require('./database.js');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const models = require('../models/items.js');
+const models = require('../models/item.model.js');
 
 
 
@@ -24,6 +24,13 @@ router.post("/api/items", cors(), (req, res) => {
         console.log(item);
     })
 });
+
+//Delete an item
+router.delete("/api/items/:itemId", cors() , (req,res) => {
+    Item.deleteOne({_id : mongoose.Types.ObjectId(req.params.itemId)},function(err){
+        if(err)return console.log(err);
+    })
+})
 
 //Get an item by id
 router.get("/api/items/:itemId", cors(), (req,res) => {
