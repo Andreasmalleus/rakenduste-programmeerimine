@@ -1,12 +1,7 @@
 body {
     background-color:white;
-}
-
-@media (max-width: 1000px){
-    .item{
-        width: 50%;
-    }
-    
+    width: 100%;
+    display: flex;
 }
 
 a:link {
@@ -17,76 +12,81 @@ a:link {
     display: flex;
     text-align: center;
     flex-wrap: wrap;
-    width: 1300px;
+    width: 100%;
     margin: 0 auto;
     
 }
-.item {
-    padding: 10px;
 
+.item {
+    padding: 5%;
 }
+
 .item:hover img{
     transform: scale(1.05);
 }
-.item img{
-    transition: transform .25s ease;
+
+a{
+    flex: 50%
 }
+
 
 .item-name{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
+    font-size: 12px;
     color: black;
     text-overflow: ellipsis;
 }
 
-.itemPage-name{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 35px;
-    color: black;
-    text-overflow: ellipsis;
-}
+
+
 .item-price{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
+    font-size: 13px;
     color: black;
     text-overflow: ellipsis;
 }
 
-.itemPage-price{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 30px;
-    color: black;
-    text-overflow: ellipsis;
+.item:hover img{
+    transform: scale(1.05);
 }
 
 .item-img{
-    width: 300px;
-    height: 300px;
-}
-.itemPage-img{
-    width: 400px;
-    height: 400px;
-}
-#container{
-    padding: 50px;
-    text-align: center;
+    transition: transform .25s ease;
+    width: 100%;
 }
 
-select {
-
-    background-color: rgb(255, 255, 255); /* Fallback color if gradients are not supported */
-    background-repeat: no-repeat;
-    color: #555;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
+@media only screen and (min-width: 768px){
+    .content{
+        width: 90%;
+    }
+    .body{
+        width: 600px;
+    }
+    a{
+        flex: 33%;
+    }
+    .item-img{
+        width: 100%;
+    }
 }
 
-.categoryText{
-    text-decoration: none;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-    color: black;
-    padding: 5px;
+@media only screen and (min-width: 1000px){
+    .content{
+        width: 94%;
+    }
+    .body{
+        width: 600px;
+    }
+    a{
+        flex: 25%;
+    }
+    .item-img{
+        width: 80%;
+    }
+    .item-name{
+        font-size: 25px;
+    }
+    .item-price{
+        font-size: 22.5px;
+    }
 }

@@ -3,19 +3,10 @@ const cors = require('cors');
 const app = express()
 const path = require("path");
 const port = process.env.PORT || 3000;//heroku vajab process.env.porti
-const DataBase = require('./newDatabase.js');
+const itemRouter = require('./item.js');
+const models = require('../models/items.js');
 
-
-//esimene parameeter on path teine callback
-
-/*app.use((req,res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-})*/
-
-//npm install cors (package)
-//app.use(cors());
-//app.get("/api/items",cors(),(req,res);
-
+app.use(itemRouter);
 
 app.get('/', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
@@ -23,14 +14,6 @@ app.get('/', cors(),(req, res) => {
 
 app.get('/home/', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
-})
-
-app.get("/api/items", cors(),(req,res) => {
-    res.json(DataBase.getItems());
-});
-
-app.get("/api/items/:itemId",cors(),(req,res) =>{
-    res.send(DataBase.getItem(req.params.itemId));
 })
 
 app.get('/home/items/*',cors(), (req, res) => {
@@ -41,8 +24,9 @@ app.get('/home/items/*',cors(), (req, res) => {
 app.use(express.static('dist'));
 
 
-
-app.listen(port, () => {
-    console.log(`Our app is running on port ${ port }`);
-    console.log(`http://localhost:${ port }`);
-});
+models.connectDb().then(async () =>{
+    app.listen(port, () => {
+        console.log(`Our app is running on port ${ port }`);
+        console.log(`http://localhost:${ port }`);
+    });
+})

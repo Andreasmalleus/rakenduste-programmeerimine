@@ -1,5 +1,6 @@
 .catagory-view{
     text-align: center;
+    width: 100%;
 }
 .categoryNew{
     margin: 20px;
@@ -13,6 +14,7 @@
 .items-length{
     font-size: 15px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
 }
 
 .categoryNew:hover{
@@ -35,4 +37,31 @@
 .categoryShirts{
     transition: transform .25s ease;
 }
+
+@media only screen and (min-width: 768px){
+    .categoryNew{
+        width: 5%;
+    }
+    .categoryShirts{
+        width: 5%;
+    }
+    .categoryShoes{
+        width: 5%;
+    }
+
+}
+
+@media only screen and (min-width: 1000px){
+    .categoryNew{
+        width: 2.5%;
+    }
+    .categoryShirts{
+        width: 2.5%;
+    }
+    .categoryShoes{
+        width: 2.5%;
+    }
+
+}
+
 
