@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
-import ItemLists from "./ItemLists.jsx";
-import CategoryView from "./CategoryView.jsx";
-import SortDropdown from "./SortDropdown.jsx";
+import Header from ".././components/Header.jsx";
+import Footer from ".././components/Footer.jsx";
+import ItemLists from ".././components/ItemLists.jsx";
+import CategoryView from ".././components/CategoryView.jsx";
+import SortDropdown from ".././components/SortDropdown.jsx";
 //import {newClothesReede, hoodiesReede, shoesReede} from "./database.js";
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
 

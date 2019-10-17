@@ -1,8 +1,8 @@
 import React from "react";
-import Footer from "./Footer.jsx";
-import Header from "./Header.jsx";
+import Footer from ".././components/Footer.jsx";
+import Header from ".././components/Header.jsx";
 import PropTypes from "prop-types";
-import "../public/css/itempage.css";
+import "../../public/css/itemPage.css";
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
 
 
@@ -20,8 +20,10 @@ class ItemPage extends React.PureComponent{
 
     fetchItem = () => {
         fetch(`http://localhost:3000/api/items/${this.props.match.params.itemId}`)
+        
         .then(results => {
             return results.json();
+            
         })
         .then(item => {
             this.setState({
@@ -34,7 +36,6 @@ class ItemPage extends React.PureComponent{
     }
 
     render(){
-        //console.log("itemId", this.props.match.params.itemId);
         //console.log("match", this.props.match);
         //console.log(this.state);
         return (

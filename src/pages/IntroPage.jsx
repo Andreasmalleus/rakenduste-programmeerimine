@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../public/css/intropage.css";
+import "../../public/css/intropage.css";
 
 class IntroPage extends React.PureComponent{
 

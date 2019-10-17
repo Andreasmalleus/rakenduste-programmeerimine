@@ -4,16 +4,30 @@ const app = express()
 const path = require("path");
 const port = process.env.PORT || 3000;//heroku vajab process.env.porti
 const itemRouter = require('./item.router.js');
+const userRouter = require('./user.router.js');
 const models = require('../models/item.model.js');
 const database = require("./database.js");
+const bodyParser = require('body-parser');
 
 
+app.use(bodyParser.json());
 
-const Item = models.Item;
-
+app.use(userRouter);
 app.use(itemRouter);
 
 app.get('/', cors(),(req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+})
+
+app.get('/login', cors(),(req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+})
+
+app.get('/signup', cors(),(req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+})
+
+app.get('/users', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
@@ -31,12 +45,13 @@ app.use(express.static('dist'));
 
 models.connectDb().then(async () =>{
     app.listen(port, () => {
-        //deleteAllItems();
-        //migrate();
         console.log(`Our app is running on port ${ port }`);
         console.log(`http://localhost:${ port }`);
     });
 })
+
+const Item = models.Item;
+
 
 //deletes all of the documents
 const deleteAllItems = () => {
@@ -53,7 +68,7 @@ const migrate = () => {
         if(countNR == 0){
             const items = database.getItems();
             items.forEach((item) => {
-                const document = new Item(item)
+                const document = new Item(item, {_id : false})
                 document.save((err, item) => {
                     if(err)return console.log(err);
                     console.log(item);

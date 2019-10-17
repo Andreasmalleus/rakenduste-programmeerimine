@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { cartIcon, loginIcon } from "./icons";
-import "../public/css/header.css";
+import { cartIcon, loginIcon } from "../icons.js";
+import "../../public/css/header.css";
 
 const Header = () => {
     return (
@@ -12,11 +12,12 @@ const Header = () => {
             </div>
         </Link>
             <div className={"headerButtons"}>
+            <Link to={"/loginPage"} >   
                 <div className={"headerButton"}>
-                    
                     <img src={loginIcon} className="headerButtonIcon"></img>
-                    <div className="headerButtonText">Login/Signup</div>
+                    <div className="headerButtonText">Login</div>
                 </div>
+            </Link>    
                 <div className={"headerButton"}>
                     <img src={cartIcon} className="headerButtonIcon"></img>
                     <div className="headerButtonText">Cart</div>

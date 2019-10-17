@@ -26,21 +26,18 @@ const getItems = () => {
         items.push({
             ...clothing,
             price : converToInt(clothing.price),
-            id : "clothing-" + index
         })
     });
     shoesEND.forEach((shoe, index) => {
         items.push({
             ...shoe,
             price : converToInt(shoe.price),
-            id : "shoes-" + index
         })
     });
     hoodiesEnd.forEach((hoodie, index)=>{
         items.push({
             ...hoodie,
             price : converToInt(hoodie.price),
-            id : "hoodie-" + index
         })
     });
     return items;

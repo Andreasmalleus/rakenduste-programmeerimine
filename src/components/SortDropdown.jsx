@@ -1,5 +1,5 @@
 import React from "react";
-import "../public/css/sortdropdown.css";
+import "../../public/css/sortdropdown.css";
 import PropTypes from "prop-types";
 
 const SortDropdown = (props) => {
