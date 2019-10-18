@@ -28,25 +28,25 @@ button{
     height: 35px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.loginContainer{
+.signupContainer{
     zoom: 1.5;
     text-align: center;
     width: 0;
     
 }
-.loginPageForm{
+.signupPageForm{
   position: absolute;
   left: 40%;
   right: 40%;
-  top: 30%;
+  top: 20%;
 }
-.links{
-    display: flex;
-    margin: 0;
+.loginInstead{
+    text-decoration: none;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.SignupInstead, .loginInput-1-text, .backtohome, .loginInput-2-text{
-    text-decoration: none;
+.signupHeader, .signupInput-1-text, .signupInput-2-text, .signupInput-3-text, .signupInput-4-text, .signupHeader{
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

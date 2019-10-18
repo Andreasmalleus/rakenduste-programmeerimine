@@ -29,27 +29,29 @@ class LoginPage extends React.PureComponent{
                 "Content-Type" : "application/json"
             },
             body : JSON.stringify(this.state),
-        })
+        });
     }
 
     render(){
         return(
+            <div className="loginContainer">
                 <div className="loginPageForm" onSubmit={this.handleSubmit.bind(this)}>
-                <h1>Sign in</h1>
+                <h1 className="loginHeading">Sign in</h1>
                 <form>
                     <div className="usernameInput" data-validate = "Username is required">
-						<input className="loginInput-1" type="text" name="username" onChange={this.handleChange.bind(this)} value={this.state.username} placeholder="username"/>
                         <div className="loginInput-1-text">Username</div>
+						<input className="loginInput-1" type="text" name="username" onChange={this.handleChange.bind(this)} value={this.state.username} placeholder="username"/>
 					</div>
                     <br></br>
                     <div className="passwordInput" data-validate = "Password is required">
-						<input className="loginInput-2" type="password" name="password" onChange={this.handleChange.bind(this)} value={this.state.password} placeholder="password"/>
                         <div className="loginInput-2-text">Password</div>
+						<input className="loginInput-2" type="password" name="password" onChange={this.handleChange.bind(this)} value={this.state.password} placeholder="password"/>
 					</div>
                     <br></br>
                     <button className="submitLogin">
 							Log in
 					</button>
+                <div className="links" > 
                     <Link to={"/signup"}>
                         <div className="SignupInstead">
                             <p>Sign up</p>
@@ -60,8 +62,10 @@ class LoginPage extends React.PureComponent{
                             <p>Home</p>
                         </div>
                     </Link>
+                </div> 
                 </form>
                 </div>
+            </div>
             );
     }
 }
