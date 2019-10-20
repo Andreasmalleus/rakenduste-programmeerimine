@@ -12,7 +12,7 @@ const Header = () => {
             </div>
         </Link>
             <div className={"headerButtons"}>
-            <Link to={"/loginPage"} >   
+            <Link to={"/login"} >   
                 <div className={"headerButton"}>
                     <img src={loginIcon} className="headerButtonIcon"></img>
                     <div className="headerButtonText">Login</div>
