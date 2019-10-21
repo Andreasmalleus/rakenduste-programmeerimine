@@ -1,6 +1,6 @@
 import React from "react";
 import { shoeIcon, newIcon, shirtIcon } from "../icons";
-import "../../public/css/CategoryView.css";
+import "../../public/css/categoryview.css";
 import propTypes from "prop-types";
 //import HomePage from "./HomePage.jsx";
 
