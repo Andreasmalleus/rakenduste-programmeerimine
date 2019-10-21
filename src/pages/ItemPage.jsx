@@ -2,7 +2,7 @@ import React from "react";
 import Footer from ".././components/Footer.jsx";
 import Header from ".././components/Header.jsx";
 import PropTypes from "prop-types";
-import "../../public/css/itemPage.css";
+import "../../public/css/itempage.css";
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
 
 
