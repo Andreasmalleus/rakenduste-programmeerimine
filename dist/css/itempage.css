@@ -1,0 +1,64 @@
+.itemPage-name{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    color: black;
+    text-overflow: ellipsis;
+}
+
+.itemPage-price{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    color: black;
+    text-overflow: ellipsis;
+}
+
+.itemPage-img{
+    width: 100%;
+    text-align: center;
+}
+
+#container{
+    text-align: center;
+    width: 100%;
+    
+}
+
+
+
+@media only screen and (min-width: 768px){
+    .itemPage-img{
+        width: 400px;
+        text-align: center;
+    }
+    .itemPage-name{
+        font-size: 20px;
+    }
+    .itemPage-price{
+        font-size: 20px;
+    }
+    #container{
+        text-align: center;
+        width: 700px;
+    }
+
+    
+}
+
+@media only screen and (min-width: 1000px){
+    .itemPage-img{
+        width: 550px;
+    }
+    .itemPage-name{
+        font-size: 30px;
+    }
+    .itemPage-price{
+        font-size: 30px;
+    }
+    #container{
+        text-align: center;
+        width: 100%;
+    }
+    
+    
+}
+

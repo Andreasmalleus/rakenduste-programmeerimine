@@ -13,7 +13,7 @@ const itemSchema = new mongoose.Schema({
 const Item = mongoose.model('Item' , itemSchema);
 
 const connectDb = () => {
-    return mongoose.connect( `${process.env.DB_CONNECTION}`, {useNewUrlParser: true, useUnifiedTopology: true });
+    return mongoose.connect( 'mongodb+srv://'+ process.env.DB_USER+':'+ process.env.DB_PWD +'@cluster0-fv8du.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true });
 }
 
 module.exports = {

@@ -23,12 +23,16 @@ class LoginPage extends React.PureComponent{
 
     handleSubmit = (event) => {
         event.preventDefault();//dont refresh browser
-        fetch("api/users/login", {
+        fetch("/api/users/login", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
             },
             body : JSON.stringify(this.state),
+        }).then(doc => {
+            if(doc === null) return doc.reject("user not found");
+        }).catch(err => {
+            console.log(err);
         });
     }
 
