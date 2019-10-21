@@ -3,32 +3,39 @@ const cors = require('cors');
 const app = express()
 const path = require("path");
 const port = process.env.PORT || 3000;//heroku vajab process.env.porti
-const DataBase = require('./newDatabase.js');
+const itemRouter = require('./item.router.js');
+const userRouter = require('./user.router.js');
+const models = require('../models/item.model.js');
+const database = require("./database.js");
+const bodyParser = require('body-parser');
 
 
-//esimene parameeter on path teine callback
+app.use(bodyParser.json());
 
-/*app.use((req,res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-})*/
+app.use(userRouter);
+app.use(itemRouter);
 
-//npm install cors (package)
-//app.use(cors());
-//app.get("/api/items",cors(),(req,res);
-
-app.get("/api/items", (req,res) => {
-    res.json(DataBase.getItems());
-});
-
-app.get('/', (req, res) => {
+app.get('/', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
-app.get("/api/items/:itemId",(req,res) =>{
-    res.send(DataBase.getItem(req.params.itemId));
+app.get('/login', cors(),(req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
-app.get('/items/*', (req, res) => {
+app.get('/signup', cors(),(req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+})
+
+app.get('/users', cors(),(req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+})
+
+app.get('/home/', cors(),(req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+})
+
+app.get('/home/items/*',cors(), (req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
@@ -36,8 +43,37 @@ app.get('/items/*', (req, res) => {
 app.use(express.static('dist'));
 
 
+models.connectDb().then(async () =>{
+    app.listen(port, () => {
+        console.log(`Our app is running on port ${ port }`);
+        console.log(`http://localhost:${ port }`);
+    });
+})
 
-app.listen(port, () => {
-    console.log(`Our app is running on port ${ port }`);
-    console.log(`http://localhost:${ port }`);
-});
+const Item = models.Item;
+
+
+//deletes all of the documents
+const deleteAllItems = () => {
+    Item.deleteMany({}, (err) => {
+        console.log(err);
+    })
+}
+
+//gets the count of all items
+const migrate = () => {
+    Item.countDocuments({}, (err, countNR) => {
+        console.log(countNR);
+        if(err)return console.log(err);
+        if(countNR == 0){
+            const items = database.getItems();
+            items.forEach((item) => {
+                const document = new Item(item, {_id : false})
+                document.save((err, item) => {
+                    if(err)return console.log(err);
+                    console.log(item);
+                })
+            })
+        }
+    })
+}

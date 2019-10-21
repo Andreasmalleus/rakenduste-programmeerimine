@@ -52,6 +52,10 @@ module.exports = {
           //if necessary
         },
       },
+      {
+        test: /\.css$/i,
+        use : ['style-loader','css-loader'],//css loader loads css file and the style loader puts it in the head element
+      },
     ],
   },
 
