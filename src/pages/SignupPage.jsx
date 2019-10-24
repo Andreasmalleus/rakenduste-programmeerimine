@@ -1,6 +1,7 @@
 import React from "react";
 import "../../public/css/signuppage.css";
 import { Link } from "react-router-dom";
+import propTypes from "prop-types";
 
 class SignupPage extends React.PureComponent{
     constructor(props){
@@ -32,6 +33,13 @@ class SignupPage extends React.PureComponent{
                 "Content-Type" : "application/json"
             },
             body : JSON.stringify(this.state)
+        }).then(result => {//needed to get resolved promise
+            return result.json();
+        }).then(data => { //then when promise is resolved
+            console.log(data);
+            if(typeof data!= "undefined"){
+                this.props.history.push("/login");
+            }
         }).catch(err => {
             console.log(err);
         });
@@ -75,5 +83,11 @@ class SignupPage extends React.PureComponent{
             );
     }
 }
+
+SignupPage.propTypes = {
+
+    history : propTypes.object
+        
+};
 
 export default SignupPage;

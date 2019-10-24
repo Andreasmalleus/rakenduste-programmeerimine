@@ -25,7 +25,7 @@ class HomePage extends React.PureComponent {
         }
 
     fetchItems  = () => {
-        fetch("http://localhost:3000/api/items")
+        fetch("http://localhost:3000/api/v1/items")
         .then(results => {
             console.log("results");
             return results.json();
