@@ -26,14 +26,14 @@ itemRouter.post("/api/items", cors(), (req, res) => {
 });
 
 //Delete an item
-itemRouter.delete("/api/items/:itemId", cors() , (req,res) => {
+itemRouter.delete("/items/:itemId", cors() , (req,res) => {
     Item.deleteOne({_id : mongoose.Types.ObjectId(req.params.itemId)},(err) =>{
         if(err)return console.log(err);
     })
 })
 
 //Get an item by id
-itemRouter.get("/api/items/:itemId", cors(), (req,res) => {
+itemRouter.get("/items/:itemId", cors(), (req,res) => {
     Item.findById((req.params.itemId), (err, item) => {
         if(err) return console.log(err);
         res.send(item);
@@ -41,7 +41,7 @@ itemRouter.get("/api/items/:itemId", cors(), (req,res) => {
 });
 
 //Get all items
-itemRouter.get("/api/items", cors(), (req,res) => {
+itemRouter.get("/items", cors(), (req,res) => {
     Item.find({},(err, items) =>{
         if(err) return console.log(err);
         res.send(items);

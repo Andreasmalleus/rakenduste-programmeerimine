@@ -9,7 +9,6 @@ class SignupPage extends React.PureComponent{
             username : "",
             password : "",
             email : "",
-            phone : ""
         };
 
     }
@@ -27,7 +26,7 @@ class SignupPage extends React.PureComponent{
         event.preventDefault();//dont refresh browser
         //console.log(this.state);
         //console.log(event);
-        fetch("/api/users/signup", {
+        fetch("/api/v1/auth/signup", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
