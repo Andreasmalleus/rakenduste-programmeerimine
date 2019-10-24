@@ -42,7 +42,6 @@ app.get('/home/items/*',cors(), (req, res) => {
 
 app.use(express.static('dist'));
 
-
 models.connectDb().then(async () =>{
     app.listen(port, () => {
         console.log(`Our app is running on port ${ port }`);

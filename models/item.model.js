@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
+if(process.env.NODE_ENV !== "production"){
+    require('dotenv').config();
+  }
 
 
 const itemSchema = new mongoose.Schema({
@@ -13,7 +15,7 @@ const itemSchema = new mongoose.Schema({
 const Item = mongoose.model('Item' , itemSchema);
 
 const connectDb = () => {
-    return mongoose.connect( 'mongodb+srv://'+ process.env.DB_USER+':'+ process.env.DB_PWD +'@cluster0-fv8du.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true });
+    return mongoose.connect( 'mongodb+srv://'+ process.env.DB_USER+':'+ process.env.DB_PASS +'@cluster0-fv8du.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true });
 }
 
 module.exports = {
