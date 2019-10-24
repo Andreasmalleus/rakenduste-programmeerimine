@@ -48,9 +48,9 @@ class SignupPage extends React.PureComponent{
                         
 					</div>
                     <br></br>
-                    <div className="emailInput" data-validate = "Email is required">
-					    <div className="signupInput-2-text">Email</div>
-                        <input className="signupInput-2" type="email" name="email" onChange={this.handleChange.bind(this)} value={this.state.email} placeholder="Email"/>
+                    <div className="emailInput" data-validate="Email is required">
+                    <div className="signupInput-2-text">Email</div>
+                    <input className="signupInput-2" type="email" name="email" onChange={this.handleChange.bind(this)} value={this.state.email} placeholder="Email"/>
 					</div>
                     <br></br>
                     <div className="phoneInput" data-validate = "Phone number is required">
@@ -63,9 +63,7 @@ class SignupPage extends React.PureComponent{
 						<input className="signupInput-4" type="password" name="password" onChange={this.handleChange.bind(this)} value={this.state.password} placeholder="Password"/>
 					</div>
                     <br></br>
-                    <button className="submitSignup">
-							Sign Up
-					</button>
+                    <button className="submitSignup">Sign Up</button>
                 <div className="links">    
                     <Link to={"/login"}>
                         <div className="loginInstead">
