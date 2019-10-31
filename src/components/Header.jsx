@@ -23,7 +23,6 @@ const Header = () => {
         </AuthContext>
     );
 };
-
 const check = (param) => {
     if(param.user.username == null){
         return (
