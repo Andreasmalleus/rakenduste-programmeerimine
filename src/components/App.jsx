@@ -1,12 +1,14 @@
 import React from "react";
 import HomePage from "../pages/HomePage.jsx";
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import ItemPage from "../pages/ItemPage.jsx";
 import IntroPage from "../pages/IntroPage.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
 import SignupPage from "../pages/SignupPage.jsx";
 import UserPage from "../pages/UserPage.jsx";
-import Header from "../components/Header.jsx";
+import NotFound from "../NotFound.jsx";
+
+export const AuthContext = React.createContext(null); 
 
 class App extends React.PureComponent{
     constructor(props){
@@ -22,6 +24,7 @@ class App extends React.PureComponent{
         };
     }
 
+
     handleLogin = (response) => {
         this.setState({
             token : response.token,
@@ -29,10 +32,12 @@ class App extends React.PureComponent{
         });
         console.log(this.state);
     }
-
+    //switch returns first match
     render(){
         return(
+        <AuthContext.Provider value={this.state}>
         <Router>
+            <Switch>
             <Route path="/" exact component={IntroPage}/>
             <Route path="/login" exact render={(props) => <LoginPage 
                 {...props}
@@ -40,17 +45,13 @@ class App extends React.PureComponent{
             />
             }/>
             <Route path="/signup" exact component = {SignupPage} />
-            <Route path="/users" exact component = {UserPage} />
+            <Route path="/user" exact component = {UserPage} />
             <Route path="/home" exact component={HomePage} />
-            <Route path="/home/items/:itemId" exact component={ItemPage} />   
-            <Route path="/" render={(props) => <Header {
-                ...props}
-                token = {this.state.token}
-                user = {this.state.user}
-                />
-                }
-            />
+            <Route path="/home/items/:itemId" exact component={ItemPage} />
+            <Route component={NotFound}/>
+            </Switch>
         </Router>
+        </AuthContext.Provider>
         );
     }
 }

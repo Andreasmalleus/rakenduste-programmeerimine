@@ -30,11 +30,11 @@ app.get('/signup', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
-app.get('/users', cors(),(req, res) => {
+app.get('/user', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
-app.get('/home/', cors(),(req, res) => {
+app.get('/home', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
