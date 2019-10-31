@@ -1,8 +1,6 @@
 import React from "react";
 import { shoeIcon, newIcon, shirtIcon } from "../icons.js";
-import "../../public/css/categoryview.css";
 import propTypes from "prop-types";
-//import HomePage from "./HomePage.jsx";
 
 class CategoryView extends React.PureComponent{
 
