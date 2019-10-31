@@ -1,32 +1,32 @@
 .heading {
     padding: 20px;
-    width: 98%;
-    height: 150px;
+    width: 100%;
+    height: 80px;
     justify-content: space-between;
     display: flex;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 25px;
+    background-color: #222222;
     position: sticky;
     top: 0;
     z-index: 100;
     display: none;
 }
-
+body{
+    overflow-x: hidden;
+}
 
 
 .logo img{
-    height: 100px;
-    width: 200px;
+    height: 50px;
+    width: 100px;
     margin: 25px;
 
 }
 
 .headerButtons {
     display: flex;
-    margin: 100px;
+    margin: 10px;
     text-align: center;
-    width: 100px;
+    width: 300px;
 
 
 }
@@ -36,6 +36,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
     font-size: 20px;
     text-align: center;
+    color: white;
 }
 .headerButton{
     width: 120px;
