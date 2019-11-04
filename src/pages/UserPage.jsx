@@ -1,7 +1,9 @@
 import React from "react";
-import { AuthContext } from "../components/App.jsx";
 import {Link} from "react-router-dom";
 import "../../public/css/userpage.css";
+import authConsumer from "../components/authConsumer.jsx";
+import protectedRedirect from "../components/protectedRedirect.jsx";
+import propTypes from "prop-types";
 
 
 class UserPage extends React.PureComponent{
@@ -10,19 +12,24 @@ class UserPage extends React.PureComponent{
     }
     render(){
         return(
-            <AuthContext.Consumer>
-                {value => (
+
                     <div className="userContent">
                     <Link to={"/home"}>
                         <div>Go back home</div>
                     </Link>
-                    <div>{value.user.username}</div>
-                    <div>{value.user.email}</div>
+                    <div>{this.props.user.username}</div>
+                    <div>{this.props.user.email}</div>
                     </div>
-                )}
-            </AuthContext.Consumer>
         );
     }
 }
 
-export default UserPage;
+export default authConsumer(protectedRedirect(UserPage));
+
+UserPage.propTypes = {
+    user : propTypes.object,
+    username : propTypes.string,
+    email : propTypes.string,
+
+};
+

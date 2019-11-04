@@ -35,8 +35,8 @@ class App extends React.PureComponent{
     //switch returns first match
     render(){
         return(
-        <AuthContext.Provider value={this.state}>
         <Router>
+            <AuthContext.Provider value={this.state}>
             <Switch>
             <Route path="/" exact component={IntroPage}/>
             <Route path="/login" exact render={(props) => <LoginPage 
@@ -50,8 +50,8 @@ class App extends React.PureComponent{
             <Route path="/home/items/:itemId" exact component={ItemPage} />
             <Route component={NotFound}/>
             </Switch>
+            </AuthContext.Provider>
         </Router>
-        </AuthContext.Provider>
         );
     }
 }
