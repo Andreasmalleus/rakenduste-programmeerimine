@@ -13,7 +13,7 @@ const protectedRedirect = (WrappedComponent) => {
                 if(this.props.user.username == null){
                     return <Redirect to="/home"/>;
                 }
-                return <WrappedComponent {...this.props}/>;
+                    return <WrappedComponent {...this.props}/>;
                 }
         };
     };

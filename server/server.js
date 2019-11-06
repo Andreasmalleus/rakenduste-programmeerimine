@@ -42,6 +42,10 @@ app.get('/home/items/*',cors(), (req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
+app.get('/cart', cors(),(req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+})
+
 
 app.use(express.static('dist'));
 

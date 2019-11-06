@@ -7,6 +7,7 @@ import LoginPage from "../pages/LoginPage.jsx";
 import SignupPage from "../pages/SignupPage.jsx";
 import UserPage from "../pages/UserPage.jsx";
 import NotFound from "../NotFound.jsx";
+import CartPage from "../pages/CartPage.jsx";
 
 export const AuthContext = React.createContext(null); 
 
@@ -48,6 +49,7 @@ class App extends React.PureComponent{
             <Route path="/user" exact component = {UserPage} />
             <Route path="/home" exact component={HomePage} />
             <Route path="/home/items/:itemId" exact component={ItemPage} />
+            <Route path="/cart" exact component={CartPage} />
             <Route component={NotFound}/>
             </Switch>
             </AuthContext.Provider>

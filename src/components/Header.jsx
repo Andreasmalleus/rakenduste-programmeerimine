@@ -48,10 +48,12 @@ const check = (param) => {
                         <div className="headerButtonText">User</div>
                     </div>
                 </Link>
+                <Link to={"/cart"}>
                 <div className={"headerButton"}>
                     <img src={cartIcon} className="headerButtonIcon"></img>
                     <div className="headerButtonText">Cart</div>
                 </div>
+                </Link>
 
             </div>
         );
