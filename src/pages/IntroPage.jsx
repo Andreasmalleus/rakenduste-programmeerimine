@@ -7,10 +7,12 @@ class IntroPage extends React.PureComponent{
     render(){
         return(
             <div className="section">
-            <div className="button">
-            <Link to={"/Home/"}>
-                <div className="randombutt">
-                <button >helloo</button>
+            
+            <div className="sectionForm">
+            <div className="sectionText">Hey there click to continue</div>
+            <Link to={"/home"}>
+                <div className="shopButton">
+                <button >Go shoppin!</button>
                 </div>
             </Link>
             </div>

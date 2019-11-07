@@ -1,5 +1,5 @@
 const express = require('express');
-const itemRouter = express();
+const router = express();
 const db = require('./database.js');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -10,7 +10,7 @@ const models = require('../models/item.model.js');
 const Item = models.Item;
 
 //Create an item
-itemRouter.post("/api/items", cors(), (req, res) => {
+router.post("/api/items", cors(), (req, res) => {
     const props = {
         id: "clothing-1",
         imgSrc: "http://qnimate.com/wp-content/uploads/2014/03/images2.jpg",
@@ -26,14 +26,14 @@ itemRouter.post("/api/items", cors(), (req, res) => {
 });
 
 //Delete an item
-itemRouter.delete("/api/items/:itemId", cors() , (req,res) => {
+router.delete("/items/:itemId", cors() , (req,res) => {
     Item.deleteOne({_id : mongoose.Types.ObjectId(req.params.itemId)},(err) =>{
         if(err)return console.log(err);
     })
 })
 
 //Get an item by id
-itemRouter.get("/api/items/:itemId", cors(), (req,res) => {
+router.get("/items/:itemId", cors(), (req,res) => {
     Item.findById((req.params.itemId), (err, item) => {
         if(err) return console.log(err);
         res.send(item);
@@ -41,11 +41,11 @@ itemRouter.get("/api/items/:itemId", cors(), (req,res) => {
 });
 
 //Get all items
-itemRouter.get("/api/items", cors(), (req,res) => {
+router.get("/items", cors(), (req,res) => {
     Item.find({},(err, items) =>{
         if(err) return console.log(err);
         res.send(items);
     });
 });
 
-module.exports = itemRouter;
+module.exports = router;

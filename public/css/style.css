@@ -1,8 +1,3 @@
-body {
-    background-color:white;
-    width: 100%;
-    display: flex;
-}
 
 a:link {
     text-decoration: none;
@@ -26,13 +21,13 @@ a:link {
 }
 
 a{
-    flex: 50%
+    flex: 25%
 }
 
 
 .item-name{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 12px;
+    font-size: 30px;
     color: black;
     text-overflow: ellipsis;
 }
@@ -41,7 +36,7 @@ a{
 
 .item-price{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 13px;
+    font-size: 2px;
     color: black;
     text-overflow: ellipsis;
 }
@@ -52,41 +47,5 @@ a{
 
 .item-img{
     transition: transform .25s ease;
-    width: 100%;
-}
-
-@media only screen and (min-width: 768px){
-    .content{
-        width: 90%;
-    }
-    .body{
-        width: 600px;
-    }
-    a{
-        flex: 33%;
-    }
-    .item-img{
-        width: 100%;
-    }
-}
-
-@media only screen and (min-width: 1000px){
-    .content{
-        width: 94%;
-    }
-    .body{
-        width: 600px;
-    }
-    a{
-        flex: 25%;
-    }
-    .item-img{
-        width: 80%;
-    }
-    .item-name{
-        font-size: 25px;
-    }
-    .item-price{
-        font-size: 22.5px;
-    }
+    width: 75%;
 }

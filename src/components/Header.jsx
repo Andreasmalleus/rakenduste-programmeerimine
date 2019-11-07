@@ -1,31 +1,69 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { cartIcon, loginIcon } from "../icons.js";
-import "../../public/css/header.css";
+import { cartIcon, loginIcon, userIcon } from "../icons.js";
+import "../../public/css/header.css";//possible because of css and style loader
+import authConsumer from "../components/authConsumer.jsx";
+import protectedRedirect from "../components/protectedRedirect.jsx";
 
-const Header = () => {
+
+
+
+const Header = (props) => {
+
     return (
-        <div className={"heading"}>
-        <Link to= {"/home"}>
-            <div className={"logo"}>
-                <img srcSet="/Images/logo.png"></img>
-            </div>
-        </Link>
-            <div className={"headerButtons"}>
-            <Link to={"/login"} >   
-                <div className={"headerButton"}>
-                    <img src={loginIcon} className="headerButtonIcon"></img>
-                    <div className="headerButtonText">Login</div>
-                </div>
-            </Link>    
-                <div className={"headerButton"}>
-                    <img src={cartIcon} className="headerButtonIcon"></img>
-                    <div className="headerButtonText">Cart</div>
-                </div>
-
-            </div>
-        </div>
+                        <div className={"heading"}>
+                        <Link to= {"/home"}>
+                            <div className={"logo"}>
+                                <img srcSet="/Images/bethehype.png" className="logo-img"></img>
+                            </div>
+                        </Link>
+                        {check(props)}
+                        </div>
     );
 };
+const check = (param) => {
+    if(param.user.username == null){
+        return (
+            <div className={"headerButtons"}>
+                <div className={"headerButton"}>
+                    <Link to={"/login"} >
+                    <img src={loginIcon} className="headerButtonIcon"></img>
+                    </Link> 
+                    <div className="headerButtonText">Login/Register</div>
+                </div>
+                <div className={"headerButton"}>
+                <Link to={"cart"}>
+                    <img src={cartIcon} className="headerButtonIcon"></img>
+                </Link>
+                    <div className="headerButtonText">Cart</div>
+                </div>
+            
+            </div>
+           
+        );
+    }else{
+        return(
+            <div className={"headerButtons"}>
+                <div>Hello, {param.user.username}</div>
+                    <div className={"headerButton"}>
+                    <Link to={"/user"}>
+                        <img src={userIcon} className="userButtonIcon"></img>
+                    </Link>
+                        <div className="headerButtonText">User</div>
+                    </div>
+               
+                
+                <div className={"headerButton"}>
+                    <Link to={"/cart"}>
+                    <img src={cartIcon} className="headerButtonIcon"></img>
+                    </Link>
+                    <div className="headerButtonText">Cart</div>
+                </div>
+              
 
-export default Header;
+            </div>
+        );
+    }
+};
+
+export default authConsumer(protectedRedirect(Header));

@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from ".././components/Footer.jsx";
 import Header from ".././components/Header.jsx";
 import PropTypes from "prop-types";
 import "../../public/css/itempage.css";
@@ -19,7 +18,7 @@ class ItemPage extends React.PureComponent{
     }
 
     fetchItem = () => {
-        fetch(`http://localhost:3000/api/items/${this.props.match.params.itemId}`)
+        fetch(`http://localhost:3000/api/v1/items/${this.props.match.params.itemId}`)
         
         .then(results => {
             return results.json();
@@ -46,7 +45,6 @@ class ItemPage extends React.PureComponent{
                 <h1 className="itemPage-name">{this.state.title}</h1>
                 <h1 className="itemPage-price">{this.state.price + " $"}</h1>
             </div>
-            <Footer/>
         </>
         );
     }

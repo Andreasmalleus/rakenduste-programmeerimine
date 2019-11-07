@@ -5,6 +5,7 @@ const path = require("path");
 const port = process.env.PORT || 3000;//heroku vajab process.env.porti
 const itemRouter = require('./item.router.js');
 const userRouter = require('./user.router.js');
+const authRouter = require('./auth.router.js');
 const models = require('../models/item.model.js');
 const database = require("./database.js");
 const bodyParser = require('body-parser');
@@ -12,9 +13,11 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-app.use(userRouter);
-app.use(itemRouter);
+app.use("/api/v1/auth",authRouter);
+app.use("/api/v1/",userRouter);
+app.use("/api/v1/",itemRouter);
 
+//vastavad otspunktid
 app.get('/', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
@@ -27,11 +30,11 @@ app.get('/signup', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
-app.get('/users', cors(),(req, res) => {
+app.get('/user', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
-app.get('/home/', cors(),(req, res) => {
+app.get('/home', cors(),(req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
@@ -39,9 +42,12 @@ app.get('/home/items/*',cors(), (req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 })
 
+app.get('/cart', cors(),(req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+})
+
 
 app.use(express.static('dist'));
-
 
 models.connectDb().then(async () =>{
     app.listen(port, () => {

@@ -1,6 +1,8 @@
 import React from "react";
 import "../../public/css/loginpage.css";
 import { Link } from "react-router-dom";
+import propTypes from "prop-types";
+
 
 class LoginPage extends React.PureComponent{
     constructor(props){
@@ -21,19 +23,33 @@ class LoginPage extends React.PureComponent{
         });
     }
 
+    //A promise is a mechanism for tracking a value that will be assigned some time in the future.
+    //Promise is at the pending state at the beginning
     handleSubmit = (event) => {
         event.preventDefault();//dont refresh browser
-        fetch("/api/users/login", {
+        fetch("/api/v1/auth/login", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
             },
             body : JSON.stringify(this.state),
-        }).then(doc => {
-            if(doc === null) return doc.reject("user not found");
+            
+        }).then(result => {//needed to get resolved promise
+            return result.json();
+        }).then(data => { //then when promise is resolved
+            console.log(data);
+            this.props.onLogin({
+                token : data.token,
+                user : data.user
+            });
+            if(typeof data != "undefined"){
+                //acts as a router and redirects if successful
+                this.props.history.push("/user");//`/users/${data.user._id}`
+            }
         }).catch(err => {
             console.log(err);
         });
+        
     }
 
     render(){
@@ -73,5 +89,12 @@ class LoginPage extends React.PureComponent{
             );
     }
 }
+
+LoginPage.propTypes = {
+
+    onLogin : propTypes.func,
+    history : propTypes.object
+          
+};
 
 export default LoginPage;
