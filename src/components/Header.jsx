@@ -14,7 +14,7 @@ const Header = (props) => {
                         <div className={"heading"}>
                         <Link to= {"/home"}>
                             <div className={"logo"}>
-                                <img srcSet="/Images/logo.png"></img>
+                                <img srcSet="/Images/bethehype.png" className="logo-img"></img>
                             </div>
                         </Link>
                         {check(props)}
@@ -25,35 +25,41 @@ const check = (param) => {
     if(param.user.username == null){
         return (
             <div className={"headerButtons"}>
-            <Link to={"/login"} >   
                 <div className={"headerButton"}>
+                    <Link to={"/login"} >
                     <img src={loginIcon} className="headerButtonIcon"></img>
+                    </Link> 
                     <div className="headerButtonText">Login/Register</div>
                 </div>
-            </Link>    
                 <div className={"headerButton"}>
+                <Link to={"cart"}>
                     <img src={cartIcon} className="headerButtonIcon"></img>
+                </Link>
                     <div className="headerButtonText">Cart</div>
                 </div>
-
+            
             </div>
+           
         );
     }else{
         return(
             <div className={"headerButtons"}>
                 <div>Hello, {param.user.username}</div>
-                <Link to={"/user"}>
                     <div className={"headerButton"}>
+                    <Link to={"/user"}>
                         <img src={userIcon} className="userButtonIcon"></img>
+                    </Link>
                         <div className="headerButtonText">User</div>
                     </div>
-                </Link>
-                <Link to={"/cart"}>
+               
+                
                 <div className={"headerButton"}>
+                    <Link to={"/cart"}>
                     <img src={cartIcon} className="headerButtonIcon"></img>
+                    </Link>
                     <div className="headerButtonText">Cart</div>
                 </div>
-                </Link>
+              
 
             </div>
         );

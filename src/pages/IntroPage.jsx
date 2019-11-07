@@ -9,7 +9,7 @@ class IntroPage extends React.PureComponent{
             <div className="section">
             
             <div className="sectionForm">
-            <div className="sectionText">Hey there feel free to go crazy</div>
+            <div className="sectionText">Hey there click to continue</div>
             <Link to={"/home"}>
                 <div className="shopButton">
                 <button >Go shoppin!</button>

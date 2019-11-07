@@ -40,7 +40,7 @@ class CartPage extends React.PureComponent{
     render(){
         return(
             <Header />, 
-            <div className={"content"} id={"item_content"}>
+            <div className={"content"}>
             <button className="cart-button" onClick={this.handleClick.bind(this)}>Continue to payment</button>
             <h1 className="title">Cart page and sum is: {this.state.items.map((item) => item.price).reduce((a,b) => a+b, 0)}</h1>
                 {this.state.items.map((item, index) => {
@@ -50,7 +50,7 @@ class CartPage extends React.PureComponent{
                             <div className="item-name">{item.title}</div>
                             <div className="item-price">{item.price + " $"}</div>
                             <div className="item-remove">
-                                <IoIosCloseCircleOutline />
+                                <IoIosCloseCircleOutline className="icon-img"/>
                             </div>
                         </div>
                     );

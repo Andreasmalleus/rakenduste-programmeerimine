@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from ".././components/Footer.jsx";
 import Header from ".././components/Header.jsx";
 import PropTypes from "prop-types";
 import "../../public/css/itempage.css";
@@ -46,7 +45,6 @@ class ItemPage extends React.PureComponent{
                 <h1 className="itemPage-name">{this.state.title}</h1>
                 <h1 className="itemPage-price">{this.state.price + " $"}</h1>
             </div>
-            <Footer/>
         </>
         );
     }

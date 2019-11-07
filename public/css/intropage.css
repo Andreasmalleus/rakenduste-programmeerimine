@@ -7,12 +7,12 @@
 .sectionForm{
     position: absolute;
     left: 45%;
-    right: 45%;
+    right: 4%;
     top: 45%;
-    display: flex;
 }
 .sectionText{
-    font-size: 60px;
+
+    font-size: 30px;
     color: aliceblue;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

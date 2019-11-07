@@ -1,2 +1,32 @@
+.content{
+    margin-top: 50px;
+}
+/*.cart-button{
+
+}
+.title{
+}
+.item{
+
+}
+.item-img{
+
+
+}*/
+.item-name{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    color: black;
+    text-overflow: ellipsis;
+}
+.item-price{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    color: black;
+    text-overflow: ellipsis;
+}
 .item-remove{
+
+}
+.icon-img{
 }

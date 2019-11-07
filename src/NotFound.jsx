@@ -1,12 +1,11 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import "../public/css/notfound.css";
 
 class NotFound extends React.PureComponent{
     render(){
         return(
             <div className="pagenotfound"> 
-            <div>Page not found</div>
-            <Link to={"/home"}><div>Go back to home</div></Link>
+            <img className="image-404" srcSet="/Images/404_Error.jpg"></img>
             </div>
         );
     }
