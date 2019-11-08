@@ -27,6 +27,7 @@ class CartPage extends React.PureComponent{
         })
         .then(items => {
             console.log("items", items);
+            items = items.slice(0,3).map((item)=> {return item});
             this.setState({
                 items
             });
@@ -39,7 +40,8 @@ class CartPage extends React.PureComponent{
     
     render(){
         return(
-            <Header />, 
+            <>
+            <Header />
             <div className={"content"}>
             <button className="cart-button" onClick={this.handleClick.bind(this)}>Continue to payment</button>
             <h1 className="title">Cart page and sum is: {this.state.items.map((item) => item.price).reduce((a,b) => a+b, 0)}</h1>
@@ -50,12 +52,13 @@ class CartPage extends React.PureComponent{
                             <div className="item-name">{item.title}</div>
                             <div className="item-price">{item.price + " $"}</div>
                             <div className="item-remove">
-                                <IoIosCloseCircleOutline className="icon-img"/>
+                                <IoIosCloseCircleOutline style={{width:"50px", height:"50px"}} />
                             </div>
                         </div>
                     );
                 })}
             </div>
+            </>
         );
     }
 
