@@ -5,7 +5,6 @@ import propTypes from "prop-types";
 
 class CategoryView extends React.PureComponent{
 
-
 render(){
 
 
