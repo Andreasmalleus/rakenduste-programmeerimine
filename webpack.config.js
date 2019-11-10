@@ -54,8 +54,7 @@ module.exports = {
         loader : 'eslint-loader',
         options: {
           //if necessary
-        },
-
+        },  
 
       },
       {
@@ -69,6 +68,17 @@ module.exports = {
       {
         test: /\.css$/i,
         use : ['style-loader','css-loader'],//css loader loads css file and the style loader puts it in the head element
+      },
+
+      {
+        test: /\.(gif|jpe?g|png|woff|woff2)$/i,
+        use : [{
+          loader : 'file-loader',
+          options : {
+            outputPath : "static/fonts"
+          },
+        }],
+
       },
     ],
   },

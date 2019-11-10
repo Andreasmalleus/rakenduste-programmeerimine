@@ -1,4 +1,3 @@
-
 a:link {
     text-decoration: none;
   }
@@ -9,8 +8,9 @@ a:link {
     flex-wrap: wrap;
     width: 100%;
     margin: 0 auto;
-    
 }
+
+
 
 .item {
     padding: 5%;

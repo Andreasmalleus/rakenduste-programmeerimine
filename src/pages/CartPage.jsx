@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header.jsx";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import "../../public/css/cartpage.css";
+import FancyButton from "../components/FancyButton.jsx";
 
 class CartPage extends React.PureComponent{
     constructor(props){
@@ -39,23 +40,32 @@ class CartPage extends React.PureComponent{
     
     render(){
         return(
+            <>
             <Header />, 
             <div className={"content"}>
-            <button className="cart-button" onClick={this.handleClick.bind(this)}>Continue to payment</button>
-            <h1 className="title">Cart page and sum is: {this.state.items.map((item) => item.price).reduce((a,b) => a+b, 0)}</h1>
-                {this.state.items.map((item, index) => {
+            <table className="product-table">
+                <tr>
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Total sum: {this.state.items.map((item) => item.price).reduce((a,b) => a+b, 0)}</th>
+                </tr>
+                {this.state.items.slice(0,3).map((item, index) => {
                     return(
-                        <div className="item" key={index}>
-                            <img srcSet={item.imgSrc} className="item-img"></img>
-                            <div className="item-name">{item.title}</div>
-                            <div className="item-price">{item.price + " $"}</div>
-                            <div className="item-remove">
-                                <IoIosCloseCircleOutline className="icon-img"/>
-                            </div>
-                        </div>
+                            <tr key={index}>
+                                <td><img srcSet={item.imgSrc} className="item-img"></img></td>
+                                <td className="item-name">{item.title}</td>
+                                <td className="item-category">{item.category}</td>
+                                <td className="item-price">{item.price + "$"}</td>
+                                <td><IoIosCloseCircleOutline className="icon-img"/></td>
+                            </tr>
                     );
                 })}
+                </table>
+                <FancyButton className="cart-button" onClick={this.handleClick} text={"Continue to payment"}></FancyButton> 
             </div>
+            </>
         );
     }
 

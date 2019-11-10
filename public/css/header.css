@@ -9,21 +9,21 @@
     margin-top: -20px;
     margin-left: -20px;
     margin-right: -20px;
+    border: 1px solid grey;
 }
 body{
     position: relative;
     overflow-x: hidden;
 }
-
-
 .logo-img{
-    width: 700px;
-    height: 700px;
-    display: block;
-    margin-top: -212.5px;
-    margin-left: 575px;
-    position: absolute;
 }
+
+.logo{
+    margin-left: 50px;
+    margin-top: 25px;
+}
+
+
 
 .headerButtons {
     display: flex;
