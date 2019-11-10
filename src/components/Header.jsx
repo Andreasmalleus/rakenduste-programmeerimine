@@ -14,7 +14,7 @@ const Header = (props) => {
                         <div className={"heading"}>
                         <Link to= {"/home"}>
                             <div className={"logo"}>
-                                <img srcSet="/Images/bethehype.png" className="logo-img"></img>
+                                <img srcSet="/static/Images/bethehype.png" className="logo-img"></img>
                             </div>
                         </Link>
                         {check(props)}

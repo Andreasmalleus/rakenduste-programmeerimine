@@ -5,7 +5,10 @@
     "build": "webpack",
     "start": "node ./server/server.js",
     "start:dev": "webpack-dev-server --open --mode=\"development\"",
-    "lint": "eslint --version"
+    "lint": "eslint --version",
+    "start:prelive": "npm run build && npm run start",
+    "start:backend": "node ./server/server.js",
+    "start:frontend": "webpack-dev-server --open --mode=\"development\""
   },
   "proxy": "http://localhost:3000",
   "dependencies": {
