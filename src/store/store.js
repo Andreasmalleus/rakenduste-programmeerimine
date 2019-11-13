@@ -1,13 +1,19 @@
 import {createStore} from "redux";
 
 const ITEM_ADDED = "ITEM_ADDED";
-//const ITEM_REMOVED = "ITEM_REMOVED";
+const ITEM_REMOVED = "ITEM_REMOVED";
 
 //action
-export const addItem = (_id) => ({
+export const addItem = (item) => ({
     type : ITEM_ADDED,
-    payload : _id
+    payload : item
 });
+
+export const removeItem = (_id) => ({
+    type : ITEM_REMOVED,
+    payload: _id
+});
+
 
 //initial state is an empty list
 const initialState = {
@@ -27,8 +33,9 @@ const reducer = (state = initialState, action) => {
         case ITEM_REMOVED:{
             return {
                 ...state, 
-                cart : state.cart.slice(0,1)
-            }
+                cart : state.cart.filter(item => item._id !== action.payload)
+                //if doesnt equal the id then we get a new cart
+            };
         }
         default : {
             return state;
@@ -38,5 +45,6 @@ const reducer = (state = initialState, action) => {
 
 const store = createStore(reducer);
 store.subscribe(() => console.log(store.getState()));
+
 
 export default store;

@@ -1,14 +1,15 @@
-.content{
+.cart-content{
     margin-top: 50px;
     text-align: center;
+    width: 1000px;
+    display: block;
+
 
 }
 .fancy-button{
     border: 1px solid black;
     border-radius: 25px;
-    width: 150px;
     padding: 5px 10px;
-    display: inline-block;
     
 }
 .button-inner{
@@ -44,5 +45,12 @@
 .icon-img{
     width: 30px;
     height: 30px;
+}
+
+.empty-cart-text{
+    text-align: center; /* align vertical */
+    margin-top: 400px;
+    font-size: 80px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 

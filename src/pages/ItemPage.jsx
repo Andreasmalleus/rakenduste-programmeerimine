@@ -14,7 +14,7 @@ class ItemPage extends React.PureComponent{
     constructor(props){
         super(props);
         this.state = {
-            
+
         };
     }
     componentDidMount(){
@@ -39,13 +39,12 @@ class ItemPage extends React.PureComponent{
     }
 
     handleBuy = () => {
-        this.props.dispatch(addItem(this.state.price));
+        this.props.dispatch(addItem(this.state));
     }
 
     render(){
         //console.log("match", this.props.match);
         //console.log(this.state);
-        console.log(this.props);
         return (
         <>
             <Header/>

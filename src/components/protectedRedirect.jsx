@@ -1,5 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
+import { Redirect } from "react-router";
 
 
 const ProtectedRedirect = (WrappedComponent) => {
@@ -9,6 +10,9 @@ const ProtectedRedirect = (WrappedComponent) => {
             user : propTypes.string
         }
         render(){
+                if(this.props.user.username == null){
+                    return <Redirect to="/home/"/>;
+                }
 
                     return <WrappedComponent {...this.props}/>;
                 }

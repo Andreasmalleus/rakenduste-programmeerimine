@@ -28,7 +28,7 @@ body{
 .headerButtons {
     display: flex;
     width: 250px;
-    margin-top: 30px;
+    margin-top: 15px;
 
 }
 .headerButtonText{
@@ -46,3 +46,12 @@ body{
     height: 100px;
 }
 
+.cart-counter{
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    background-color: black;
+    border-radius: 50px;
+    color: white;
+    text-align: center;
+}
