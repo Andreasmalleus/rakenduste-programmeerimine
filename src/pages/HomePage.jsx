@@ -6,6 +6,8 @@ import CategoryView from ".././components/CategoryView.jsx";
 import SortDropdown from ".././components/SortDropdown.jsx";
 //import {newClothesReede, hoodiesReede, shoesReede} from "./database.js";
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
+//import {connect} from "react-redux";
+//import {getItems} from "../store/store.js";
 
 
 
@@ -23,6 +25,11 @@ class HomePage extends React.PureComponent {
     componentDidMount(){
             this.fetchItems();
         }
+
+    /*fetchItems  = () => {
+        this.props.dispatch(getItems());
+    
+    }*/
 
     fetchItems  = () => {
         fetch("http://localhost:3000/api/v1/items")
@@ -85,5 +92,19 @@ class HomePage extends React.PureComponent {
     //sending event hande as prop
     }
 }
+
+/*const mapStateToProps = (store) => {
+    return{
+        items: store.items,
+        error : store.error
+    };
+};
+
+HomePage.propTypes = {
+    dispatch : PropTypes.func,
+    items : PropTypes.array
+};
+
+export default connect(mapStateToProps)(HomePage);*/
 
 export default HomePage;
