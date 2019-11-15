@@ -11,6 +11,7 @@ class UserPage extends React.PureComponent{
         super(props);
     }
     render(){
+        console.log("hello");
         return(
 
                     <div className="userContent">

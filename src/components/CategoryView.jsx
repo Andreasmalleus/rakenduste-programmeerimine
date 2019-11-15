@@ -15,6 +15,7 @@ render(){
                 <div className="items-length">
                     Tooteid on antud lehel: {this.props.itemsLen}
                 </div>
+                <div></div>
                 <img src={newIcon} className="categoryNew" onClick={()=> this.props.onChange("New This Week | END.")}></img>
                 <img src={shoeIcon} className="categoryShoes" onClick={()=> this.props.onChange("Sneakers | END.")} ></img>
                 <img src={shirtIcon} className="categoryShirts" onClick={()=> this.props.onChange("Sweats | END.")}></img>

@@ -25,6 +25,7 @@ const Header = ({user, cart}) => {
 };
 const check = (user, cart) => {
     if(user.username == null){
+        console.log("hello");
         return unlogged(cart);
     }else{
         return logged(user, cart);
