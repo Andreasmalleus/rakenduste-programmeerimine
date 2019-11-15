@@ -6,8 +6,9 @@ import CategoryView from ".././components/CategoryView.jsx";
 import SortDropdown from ".././components/SortDropdown.jsx";
 //import {newClothesReede, hoodiesReede, shoesReede} from "./database.js";
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
-//import {connect} from "react-redux";
-//import {getItems} from "../store/store.js";
+import {connect} from "react-redux";
+import {getItems} from "../store/store.js";
+import PropTypes from "prop-types";
 
 
 
@@ -26,26 +27,9 @@ class HomePage extends React.PureComponent {
             this.fetchItems();
         }
 
-    /*fetchItems  = () => {
+    fetchItems  = () => {
         this.props.dispatch(getItems());
     
-    }*/
-
-    fetchItems  = () => {
-        fetch("http://localhost:3000/api/v1/items")
-        .then(results => {
-            return results.json();
-        })
-        .then(items => {
-            this.setState({
-                items
-            });
-        })
-        .catch(err => {
-            console.log("err", err);
-        });
-        
-
     }
 
     //handle need to be in parent
@@ -64,7 +48,7 @@ class HomePage extends React.PureComponent {
     }
 
     setVisibleItems =() => {
-        return this.state.items
+        return this.props.items
         .filter(item => item.category === this.state.selectedCategory)
         .sort((a,b) => {
             switch(this.state.sortDirection){
@@ -75,7 +59,7 @@ class HomePage extends React.PureComponent {
     }
 
     showItemCount = () => {
-        return this.state.items.filter(item => item.category == this.state.selectedCategory).length;
+        return this.props.items.filter(item => item.category == this.state.selectedCategory).length;
     }
 
 
@@ -93,7 +77,7 @@ class HomePage extends React.PureComponent {
     }
 }
 
-/*const mapStateToProps = (store) => {
+const mapStateToProps = (store) => {
     return{
         items: store.items,
         error : store.error
@@ -105,6 +89,5 @@ HomePage.propTypes = {
     items : PropTypes.array
 };
 
-export default connect(mapStateToProps)(HomePage);*/
+export default connect(mapStateToProps)(HomePage);
 
-export default HomePage;
