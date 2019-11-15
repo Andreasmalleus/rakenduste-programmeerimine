@@ -39,16 +39,16 @@ class CartPage extends React.PureComponent{
                         <th>Name</th>
                         <th>Category</th>
                         <th>Price</th>
-                        <th>Total sum: {this.props.cart.map((item) => item.price).reduce((a,b) => a+b, 0)}</th>
+                        <th>Total sum: {this.props.cart.map((item) => item.price).reduce((a,b) => a+b, 0)} $</th>
                     </tr>
                     {this.props.cart.map((item, index) => {
                         return(
                                 <tr key={index}>
-                                    <td><img srcSet={item.imgSrc} className="item-img"></img></td>
-                                    <td className="item-name">{item.title}</td>
-                                    <td className="item-category">{item.category}</td>
-                                    <td className="item-price">{item.price + "$"}</td>
-                                    <td><IoIosCloseCircleOutline className="icon-img" onClick={()=> this.handleRemove(item._id)}/></td>
+                                    <td><img srcSet={item.imgSrc} className="cart-item-img"></img></td>
+                                    <td className="cart-item-name">{item.title}</td>
+                                    <td className="cart-item-category">{item.category}</td>
+                                    <td className="cart-item-price">{item.price + "$"}</td>
+                                    <td><IoIosCloseCircleOutline className="cart-icon-img" onClick={()=> this.handleRemove(item._id)}/></td>
                                 </tr>
                         );
                     })}

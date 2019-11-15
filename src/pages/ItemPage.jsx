@@ -7,6 +7,8 @@ require("typeface-roboto");
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
 import {connect} from "react-redux";
 import { addItem } from "../store/store.js";
+import {ToastContainer,toast} from "react-toastify";
+
 
 
 
@@ -17,6 +19,8 @@ class ItemPage extends React.PureComponent{
 
         };
     }
+    notify = () => toast("Item added to cart", {autoClose : 100});
+    
     componentDidMount(){
         this.fetchItem();
     }
@@ -39,6 +43,7 @@ class ItemPage extends React.PureComponent{
     }
 
     handleBuy = () => {
+        this.notify();
         this.props.dispatch(addItem(this.state));
     }
 
@@ -49,10 +54,11 @@ class ItemPage extends React.PureComponent{
         <>
             <Header/>
             <div id={"container"}>
+            <ToastContainer/>
                 <img src={this.state.imgSrc} className="itemPage-img"></img>
                 <h1 className="itemPage-name">{this.state.title}</h1>
                 <h1 className="itemPage-price">{this.state.price + " $"}</h1>
-                <FancyButton handleClick={this.handleBuy} text="Add to cart"/>
+                <FancyButton handleClick={this.handleBuy} text="Add to cart"/>        
             </div>
         </>
         );
