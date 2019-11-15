@@ -1,7 +1,8 @@
 import React from "react";
 import "../../public/css/loginpage.css";
-import { Link } from "react-router-dom";
 import propTypes from "prop-types";
+import { Link } from "react-router-dom";
+
 
 
 class LoginPage extends React.PureComponent{
@@ -54,37 +55,25 @@ class LoginPage extends React.PureComponent{
 
     render(){
         return(
-            <div className="loginContainer">
-                <div className="loginPageForm" onSubmit={this.handleSubmit.bind(this)}>
-                <h1 className="loginHeading">Sign in</h1>
-                <form>
-                    <div className="usernameInput" data-validate = "Username is required">
-                        <div className="loginInput-1-text">Username</div>
-						<input className="loginInput-1" type="text" name="username" onChange={this.handleChange.bind(this)} value={this.state.username} placeholder="username"/>
-					</div>
-                    <br></br>
-                    <div className="passwordInput" data-validate = "Password is required">
-                        <div className="loginInput-2-text">Password</div>
-						<input className="loginInput-2" type="password" name="password" onChange={this.handleChange.bind(this)} value={this.state.password} placeholder="password"/>
-					</div>
-                    <br></br>
-                    <button className="submitLogin">
-							Log in
-					</button>
-                <div className="links" > 
-                    <Link to={"/signup"}>
-                        <div className="SignupInstead">
-                            <p>Sign up</p>
-                        </div>
-                    </Link>
-                    <Link to= {"/home"}>
-                        <div className="backtohome">
-                            <p>Home</p>
-                        </div>
-                    </Link>
-                </div> 
-                </form>
-                </div>
+            <div className="form-body" onSubmit={this.handleSubmit.bind(this)}>
+            <form className="box">
+            <h1>Login</h1>
+            <input type="text" name="username" placeholder="Username" onChange={this.handleChange.bind(this)} value={this.state.username}/>
+            <input type="password" name="password" placeholder="Password"onChange={this.handleChange.bind(this)} value={this.state.password}/>
+            <input type="submit" name="" value="Login"/>
+            <div className="links">
+                <Link to= {"/signup"}>
+                    <h2 className="home-button">
+                        Signup
+                    </h2>
+                </Link>
+                <Link to= {"/home"}>
+                    <h2 className="signup-button">
+                        Home
+                    </h2>
+                </Link>
+            </div>
+            </form>
             </div>
             );
     }

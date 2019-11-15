@@ -47,39 +47,22 @@ class SignupPage extends React.PureComponent{
 
     render(){
         return(
-            <div className="signupContainer">
-                <div className="signupPageForm" onSubmit={this.handleSubmit.bind(this)}>
-                <h1 className="signupHeader">Sign up</h1>
-                <form>
-                    <div className="usernameInput" data-validate="Username is required">
-                        <div className="signupInput-1-text">Username</div>
-                        <input className="signupInput-1" type="text" name="username" onChange={this.handleChange.bind(this)} value={this.state.username} placeholder="Username"/>
-                        
-					</div>
-                    <br></br>
-                    <div className="emailInput" data-validate="Email is required">
-					<div className="signupInput-2-text">Email</div>
-                    <input className="signupInput-2" type="email" name="email" onChange={this.handleChange.bind(this)} value={this.state.email} placeholder="Email"/>
-					</div>
-                    <br></br>
-                    <div className="passwordInput" data-validate="Password is required">
-                        <div className="signupInput-4-text">Password</div>
-						<input className="signupInput-4" type="password" name="password" onChange={this.handleChange.bind(this)} value={this.state.password} placeholder="Password"/>
-					</div>
-                    <br></br>
-                    <button className="submitSignup">
-							Sign Up
-					</button>
-                <div className="links">    
-                    <Link to={"/login"}>
-                        <div className="loginInstead">
-                            <p>Back to loginpage</p>
-                        </div>
-                    </Link>
-                </div>
-                </form>
-                </div>  
-            </div>          
+            <div className="form-body" onSubmit={this.handleSubmit.bind(this)}>
+            <form className="box">
+            <h1>Signup</h1>
+            <input type="text" name="username" placeholder="Username" onChange={this.handleChange.bind(this)} value={this.state.username}/>
+            <input type="email" name="email" placeholder="Email"onChange={this.handleChange.bind(this)} value={this.state.email}/>
+            <input type="password" name="password" placeholder="Password"onChange={this.handleChange.bind(this)} value={this.state.password}/>
+            <input type="submit" name="" value="Login"/>
+            <div className="links">
+                <Link to= {"/login"}>
+                    <h2 className="signup-button">
+                        Back to login
+                    </h2>
+                </Link>
+            </div>
+            </form>
+            </div>       
             );
     }
 }
