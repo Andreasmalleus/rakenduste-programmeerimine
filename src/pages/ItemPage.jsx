@@ -6,7 +6,7 @@ import FancyButton from "../components/FancyButton.jsx";
 require("typeface-roboto");
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
 import {connect} from "react-redux";
-import { addItem } from "../store/store.js";
+import { addItem } from "../store/actions.js";
 import {ToastContainer,toast} from "react-toastify";
 
 

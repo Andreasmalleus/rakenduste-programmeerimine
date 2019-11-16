@@ -29,7 +29,9 @@ body{
     display: flex;
     width: 250px;
     margin-top: 15px;
-
+}
+.headerButton{
+    display: flex;
 }
 .headerButtonText{
     color: black;

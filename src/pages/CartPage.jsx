@@ -5,7 +5,7 @@ import "../../public/css/cartpage.css";
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import { removeItem } from "../store/store.js";
+import { removeItem } from "../store/actions.js";
 
 
 class CartPage extends React.PureComponent{

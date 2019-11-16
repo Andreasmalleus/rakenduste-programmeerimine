@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { cartIcon, loginIcon, userIcon } from "../icons.js";
 import "../../public/css/header.css";//possible because of css and style loader
-import AuthConsumer from "./AuthConsumer.jsx";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
@@ -24,7 +23,7 @@ const Header = ({user, cart}) => {
     );
 };
 const check = (user, cart) => {
-    if(user.username == null){
+    if(user == null){
         console.log("hello");
         return unlogged(cart);
     }else{
@@ -87,7 +86,7 @@ Header.propTypes = {
 
     //location : PropTypes.string,
     cart : PropTypes.array,
-    user : PropTypes.object,
+    user : PropTypes.array,
 
 };
 
@@ -99,9 +98,11 @@ Badge.propTypes = {
 
 
 const mapStateToProps = (store) => {
+    console.log(store);
     return{
-        cart: store.cart
+        cart: store.cart,
+        user : store.user
     };
 };
 
-export default connect(mapStateToProps)(AuthConsumer(Header));
+export default connect(mapStateToProps)(Header);

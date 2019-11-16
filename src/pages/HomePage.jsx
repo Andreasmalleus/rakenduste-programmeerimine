@@ -7,7 +7,7 @@ import SortDropdown from ".././components/SortDropdown.jsx";
 //import {newClothesReede, hoodiesReede, shoesReede} from "./database.js";
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
 import {connect} from "react-redux";
-import {getItems} from "../store/store.js";
+import {getItems} from "../store/actions.js";
 import PropTypes from "prop-types";
 
 

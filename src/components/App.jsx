@@ -14,39 +14,14 @@ import CartPage from "../pages/CartPage.jsx";
 export const AuthContext = React.createContext(null); 
 
 class App extends React.PureComponent{
-    constructor(props){
-        super(props);
-        this.state= {
-            token : null,
-            user : {
-                username : null,
-                email : null,
-                _id : null,
-                createdAt : null
-            }
-        };
-    }
 
-
-    handleLogin = (response) => {
-        this.setState({
-            token : response.token,
-            user : response.user
-        });
-        console.log(this.state);
-    }
     //switch returns first match
     render(){
         return(
         <Router>
-            <AuthContext.Provider value={this.state}>
             <Switch>
             <Route path="/" exact component={IntroPage}/>
-            <Route path="/login" exact render={(props) => <LoginPage 
-                {...props}
-                onLogin = {this.handleLogin}
-            />
-            }/>
+            <Route path="/login" exact component={LoginPage} />
             <Route path="/signup" exact component = {SignupPage} />
             <Route path="/user" exact component = {UserPage} />
             <Route path="/home" exact component={HomePage} />
@@ -54,10 +29,8 @@ class App extends React.PureComponent{
             <Route path="/cart" exact component={CartPage} />
             <Route component={NotFound}/>
             </Switch>
-            </AuthContext.Provider>
         </Router>
         );
     }
 }
-
 export default App;

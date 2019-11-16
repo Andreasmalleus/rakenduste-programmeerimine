@@ -1,55 +1,4 @@
-import {createStore, applyMiddleware} from "redux";
-import thunk from "redux-thunk";
-
-const middlewares = [thunk];
-
-const ITEM_ADDED = "ITEM_ADDED";
-const ITEM_REMOVED = "ITEM_REMOVED";
-const ITEMS_REQUEST = "ITEMS_REQUEST";
-const ITEMS_SUCCESS = "ITEMS_SUCCESS";
-const ITEMS_FAILURE = "ITEMS_FAILURE";
-
-//action
-export const addItem = (item) => ({
-    type : ITEM_ADDED,
-    payload : item
-});
-
-export const removeItem = (_id) => ({
-    type : ITEM_REMOVED,
-    payload: _id
-});
-
-export const itemsRequest = () => ({
-    type : ITEMS_REQUEST
-});
-
-export const itemSuccess = (items) => ({
-    type : ITEMS_SUCCESS,
-    payload : items
-});
-
-export const itemsFailure = (error) => ({
-    type : ITEMS_FAILURE,
-    payload : error
-});
-
-export const getItems = () => { 
-        return dispatch =>  {
-        dispatch(itemsRequest());
-        fetch("http://localhost:3000/api/v1/items")
-        .then(result => {
-            return result.json();
-        })
-        .then(items => {
-            dispatch(itemSuccess(items));
-        })
-        .catch(err => {
-            dispatch(itemsFailure(err));
-        }) ;
-    };
-};
-
+import {ITEM_ADDED, ITEM_REMOVED, ITEMS_REQUEST, ITEMS_SUCCESS, ITEMS_FAILURE, USER_UPDATE, TOKEN_UPDATE} from "./actions.js";
 
 //initial state is an empty list
 const initialState = {
@@ -58,7 +7,9 @@ const initialState = {
     ],
     items : [
 
-    ]
+    ],
+    user : null,
+    token : null
 };
 
 //after action is dispatched it will be passed to the reducer 
@@ -100,14 +51,25 @@ const reducer = (state = initialState, action) => {
                 //if doesnt equal the id then we get a new cart
             };
         }
+        case USER_UPDATE:{
+            return {
+                ...state, 
+                user : action.payload
+                //if doesnt equal the id then we get a new cart
+            };
+        }
+        case TOKEN_UPDATE:{
+            return {
+                ...state, 
+                token : action.payload
+                //if doesnt equal the id then we get a new cart
+            };
+        }
+        
         default : {
             return state;
         }
     }
 };
 
-const store = createStore(reducer, applyMiddleware(...middlewares));
-store.subscribe(() => console.log(store.getState()));
-
-
-export default store;
+export default reducer;

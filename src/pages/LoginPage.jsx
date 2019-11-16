@@ -2,6 +2,9 @@ import React from "react";
 import "../../public/css/loginpage.css";
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
+import {connect} from "react-redux";
+import { userUpdate } from "../store/actions.js";
+import { tokenUpdate } from "../store/actions.js";
 
 
 
@@ -15,14 +18,6 @@ class LoginPage extends React.PureComponent{
 
     }
 
-    
-
-    handleChange = (event) => {
-        //console.log(event.target.name, event.target.value);
-        this.setState({
-            [event.target.name] : event.target.value,
-        });
-    }
 
     //A promise is a mechanism for tracking a value that will be assigned some time in the future.
     //Promise is at the pending state at the beginning
@@ -37,12 +32,9 @@ class LoginPage extends React.PureComponent{
             
         }).then(result => {//needed to get resolved promise
             return result.json();
-        }).then(data => { //then when promise is resolved
-            console.log(data);
-            this.props.onLogin({
-                token : data.token,
-                user : data.user
-            });
+        }).then(data => { 
+            //then when promise is resolved
+            this.handleSuccess(data.user, data.token);
             if(typeof data != "undefined"){
                 //acts as a router and redirects if successful
                 this.props.history.push("/user");//`/users/${data.user._id}`
@@ -51,6 +43,18 @@ class LoginPage extends React.PureComponent{
             console.log(err);
         });
         
+    }
+
+    handleChange = (event) => {
+        //console.log(event.target.name, event.target.value);
+        this.setState({
+            [event.target.name] : event.target.value,
+        });
+    }
+
+    handleSuccess = (user, token) => {
+        this.props.dispatch(userUpdate(user));
+        this.props.dispatch(tokenUpdate(token));
     }
 
     render(){
@@ -82,8 +86,9 @@ class LoginPage extends React.PureComponent{
 LoginPage.propTypes = {
 
     onLogin : propTypes.func,
-    history : propTypes.object
+    history : propTypes.object,
+    dispatch : propTypes.func
           
 };
 
-export default LoginPage;
+export default connect()(LoginPage);
