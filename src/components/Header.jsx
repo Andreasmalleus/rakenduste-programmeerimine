@@ -67,7 +67,7 @@ const logged = (user, cart) => {
         <div className={"headerButtons"}>
         <div>Hello, {user.username}</div>
         <div className={"headerButton"}>
-        <Link to={"/user"}>
+        <Link to={`/user/${user._id}`}>
             <img src={userIcon} className="userButtonIcon"></img>
         </Link>
             <div className="headerButtonText">User</div>

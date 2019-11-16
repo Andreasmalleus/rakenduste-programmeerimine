@@ -23,7 +23,7 @@ class App extends React.PureComponent{
             <Route path="/" exact component={IntroPage}/>
             <Route path="/login" exact component={LoginPage} />
             <Route path="/signup" exact component = {SignupPage} />
-            <Route path="/user" exact component = {UserPage} />
+            <Route path="/user/:userId" exact component = {UserPage} />
             <Route path="/home" exact component={HomePage} />
             <Route path="/home/items/:itemId" exact component={ItemPage} />
             <Route path="/cart" exact component={CartPage} />

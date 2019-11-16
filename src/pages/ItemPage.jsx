@@ -8,6 +8,7 @@ require("typeface-roboto");
 import {connect} from "react-redux";
 import { addItem } from "../store/actions.js";
 import {ToastContainer,toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -19,7 +20,6 @@ class ItemPage extends React.PureComponent{
 
         };
     }
-    notify = () => toast("Item added to cart", {autoClose : 100});
     
     componentDidMount(){
         this.fetchItem();
@@ -43,22 +43,23 @@ class ItemPage extends React.PureComponent{
     }
 
     handleBuy = () => {
-        this.notify();
         this.props.dispatch(addItem(this.state));
+        toast.success("Item added to cart", {autoClose : 1500, position: toast.POSITION.TOP_CENTER});
     }
 
     render(){
         //console.log("match", this.props.match);
         //console.log(this.state);
+        
         return (
         <>
             <Header/>
             <div id={"container"}>
-            <ToastContainer/>
                 <img src={this.state.imgSrc} className="itemPage-img"></img>
                 <h1 className="itemPage-name">{this.state.title}</h1>
                 <h1 className="itemPage-price">{this.state.price + " $"}</h1>
-                <FancyButton handleClick={this.handleBuy} text="Add to cart"/>        
+                <FancyButton handleClick={this.handleBuy} text="Add to cart"/>      
+                <ToastContainer/>  
             </div>
         </>
         );

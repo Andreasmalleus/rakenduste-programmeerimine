@@ -54,14 +54,21 @@
 }
 
 
-.empty-cart-text{
-    text-align: center; /* align vertical */
-    margin-top: 400px;
-    font-size: 80px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
 .cart-button{
     width: 1100px;
+}
+
+img.empty-cart-img{
+    position: absolute;
+    top: 800px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+
+}
+
+.empty-cart{
 }
 

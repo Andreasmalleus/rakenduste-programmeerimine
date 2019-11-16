@@ -10,7 +10,7 @@ const ProtectedRedirect = (WrappedComponent) => {
             user : propTypes.string
         }
         render(){
-                if(this.props.user.username == null){
+                if(this.props.user == null){
                     return <Redirect to="/home/"/>;
                 }
 
@@ -18,7 +18,6 @@ const ProtectedRedirect = (WrappedComponent) => {
                 }
         };
     };
-
 
 
 export default ProtectedRedirect;

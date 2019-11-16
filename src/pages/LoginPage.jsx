@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import {connect} from "react-redux";
 import { userUpdate } from "../store/actions.js";
 import { tokenUpdate } from "../store/actions.js";
+import {ToastContainer,toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -34,13 +36,19 @@ class LoginPage extends React.PureComponent{
             return result.json();
         }).then(data => { 
             //then when promise is resolved
+            toast.success("Successful login" , {
+                autoClose : 1500, position: toast.POSITION.TOP_CENTER 
+            });
             this.handleSuccess(data.user, data.token);
             if(typeof data != "undefined"){
                 //acts as a router and redirects if successful
-                this.props.history.push("/user");//`/users/${data.user._id}`
+                this.props.history.push(`/user/${data.user._id}`);
             }
         }).catch(err => {
             console.log(err);
+            toast.error("Unsuccessful login" , {
+                autoClose : 1500, position: toast.POSITION.TOP_CENTER 
+            });
         });
         
     }
@@ -77,6 +85,7 @@ class LoginPage extends React.PureComponent{
                     </h2>
                 </Link>
             </div>
+            <ToastContainer/>
             </form>
             </div>
             );
