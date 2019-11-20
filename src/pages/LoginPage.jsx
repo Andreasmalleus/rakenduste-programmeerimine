@@ -25,7 +25,7 @@ class LoginPage extends React.PureComponent{
     //Promise is at the pending state at the beginning
     handleSubmit = (event) => {
         event.preventDefault();//dont refresh browser
-        fetch("/api/v1/auth/login", {
+        fetch("http://localhost:3000/api/v1/auth/login", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"

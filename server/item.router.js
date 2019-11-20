@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express();
-const db = require('./database.js');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const models = require('../models/item.model.js');
@@ -10,7 +9,7 @@ const models = require('../models/item.model.js');
 const Item = models.Item;
 
 //Create an item
-router.post("/api/items", cors(), (req, res) => {
+router.post("/items", cors(), (req, res) => {
     const props = {
         id: "clothing-1",
         imgSrc: "http://qnimate.com/wp-content/uploads/2014/03/images2.jpg",

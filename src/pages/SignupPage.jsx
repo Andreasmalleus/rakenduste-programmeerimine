@@ -29,7 +29,7 @@ class SignupPage extends React.PureComponent{
         event.preventDefault();//dont refresh browser
         //console.log(this.state);
         //console.log(event);
-        fetch("/api/v1/auth/signup", {
+        fetch("http://localhost:3000/api/v1/auth/signup", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
