@@ -20,14 +20,14 @@ class App extends React.PureComponent{
         return(
         <Router>
             <Switch>
-            <Route path="/" exact component={IntroPage}/>
+            <Route path="/intro" exact component={IntroPage}/>
             <Route path="/login" exact component={LoginPage} />
             <Route path="/signup" exact component = {SignupPage} />
             <Route path="/user/:userId" exact component = {UserPage} />
-            <Route path="/home" exact component={HomePage} />
-            <Route path="/home/items/:itemId" exact component={ItemPage} />
-            <Route path="/cart" exact component={CartPage} />
-            <Route component={NotFound}/>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/items/:itemId" exact component={ItemPage} />
+            <Route path="/items/:userId/cart" exact component={CartPage} />
+            <Route exact component={NotFound}/>
             </Switch>
         </Router>
         );

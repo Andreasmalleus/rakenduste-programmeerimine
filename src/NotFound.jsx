@@ -5,7 +5,7 @@ class NotFound extends React.PureComponent{
     render(){
         return(
             <div className="pagenotfound"> 
-            <img className="image-404" srcSet="/Images/404_Error.jpg"></img>
+            <img className="image-404" srcSet="/static/Images/404_Error.jpg"></img>
             </div>
         );
     }

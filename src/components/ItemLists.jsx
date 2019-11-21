@@ -28,7 +28,7 @@ const ItemLists = (props) => {//komponent
 
 const Item = (props) => {
     return (
-        <Link to={`/home/items/${props.id}`} >
+        <Link to={`/items/${props.id}`} >
             <div className="item">
                 <img srcSet={props.src} className="item-img"></img>
                 <div className="item-name">{props.title}</div>

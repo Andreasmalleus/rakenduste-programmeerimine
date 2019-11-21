@@ -79,7 +79,7 @@ class LoginPage extends React.PureComponent{
                         Signup
                     </h2>
                 </Link>
-                <Link to= {"/home"}>
+                <Link to= {"/"}>
                     <h2 className="signup-button">
                         Home
                     </h2>

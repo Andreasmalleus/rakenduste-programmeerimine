@@ -12,7 +12,7 @@ class UserPage extends React.PureComponent{
     handleLogout = () => {
         this.props.dispatch(userUpdate(null));
         this.props.dispatch(tokenUpdate(null));
-        this.props.history.push("/home");
+        this.props.history.push("/");
     }
 
     render(){
@@ -20,7 +20,7 @@ class UserPage extends React.PureComponent{
         return(
 
                     <div className="userContent">
-                    <Link to={"/home"}>
+                    <Link to={"/"}>
                         <div>Go back home</div>
                     </Link>
                     <div>{this.props.user.username}</div>

@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 const Header = ({user, cart}) => {
     return (
                         <div className={"heading"}>
-                        <Link to= {"/home"}>
+                        <Link to= {"/"}>
                             <div className={"logo"}>
                                 <img srcSet="/static/Images/bethehype1.png" className="logo-img"></img>
                             </div>
@@ -53,7 +53,7 @@ const unlogged = (cart) => {
         </div>
         <div className={"headerButton"}>
         <Badge len={cart.length}/>
-        <Link to={"/cart"}>
+        <Link to={"/items/:userId/cart"}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
         <div className="headerButtonText">Cart</div>
@@ -73,7 +73,7 @@ const logged = (user, cart) => {
             <div className="headerButtonText">User</div>
         <div className={"headerButton"}></div>
         <Badge len={cart.length}/>
-        <Link to={"/cart"}>
+        <Link to={"/items/:userId/cart"}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
         <div className="headerButtonText">Cart</div>
