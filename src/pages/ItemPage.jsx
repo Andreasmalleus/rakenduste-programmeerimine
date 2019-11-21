@@ -6,7 +6,10 @@ import FancyButton from "../components/FancyButton.jsx";
 require("typeface-roboto");
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
 import {connect} from "react-redux";
-import { addItem } from "../store/store.js";
+import { addItem } from "../store/actions.js";
+import {ToastContainer,toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 
@@ -17,16 +20,15 @@ class ItemPage extends React.PureComponent{
 
         };
     }
+    
     componentDidMount(){
         this.fetchItem();
     }
 
     fetchItem = () => {
         fetch(`http://localhost:3000/api/v1/items/${this.props.match.params.itemId}`)
-        
         .then(results => {
             return results.json();
-            
         })
         .then(item => {
             this.setState({
@@ -40,11 +42,13 @@ class ItemPage extends React.PureComponent{
 
     handleBuy = () => {
         this.props.dispatch(addItem(this.state));
+        toast.success("Item added to cart", {autoClose : 1500, position: toast.POSITION.TOP_CENTER});
     }
 
     render(){
         //console.log("match", this.props.match);
         //console.log(this.state);
+        
         return (
         <>
             <Header/>
@@ -52,7 +56,8 @@ class ItemPage extends React.PureComponent{
                 <img src={this.state.imgSrc} className="itemPage-img"></img>
                 <h1 className="itemPage-name">{this.state.title}</h1>
                 <h1 className="itemPage-price">{this.state.price + " $"}</h1>
-                <FancyButton handleClick={this.handleBuy} text="Add to cart"/>
+                <FancyButton handleClick={this.handleBuy} text="Add to cart"/>      
+                <ToastContainer/>  
             </div>
         </>
         );

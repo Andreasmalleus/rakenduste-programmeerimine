@@ -9,6 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'static/bundle.js'
   },
+  devtool: "eval-source-map",
   plugins: [
     new CopyPlugin([
       {
@@ -39,7 +40,8 @@ module.exports = {
     //use proxy to get rid of cors
     proxy : {
       "/api" : {
-        target : 'https://localhost:3000'
+        target : 'https://localhost:3000',
+        changeOrigin: true
       }
       
     }

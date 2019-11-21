@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { cartIcon, loginIcon, userIcon } from "../icons.js";
 import "../../public/css/header.css";//possible because of css and style loader
-import AuthConsumer from "./AuthConsumer.jsx";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
@@ -12,7 +11,7 @@ import PropTypes from "prop-types";
 const Header = ({user, cart}) => {
     return (
                         <div className={"heading"}>
-                        <Link to= {"/home"}>
+                        <Link to= {"/"}>
                             <div className={"logo"}>
                                 <img srcSet="/static/Images/bethehype1.png" className="logo-img"></img>
                             </div>
@@ -24,7 +23,7 @@ const Header = ({user, cart}) => {
     );
 };
 const check = (user, cart) => {
-    if(user.username == null){
+    if(user == null){
         console.log("hello");
         return unlogged(cart);
     }else{
@@ -54,7 +53,7 @@ const unlogged = (cart) => {
         </div>
         <div className={"headerButton"}>
         <Badge len={cart.length}/>
-        <Link to={"/cart"}>
+        <Link to={"/items/:userId/cart"}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
         <div className="headerButtonText">Cart</div>
@@ -68,13 +67,13 @@ const logged = (user, cart) => {
         <div className={"headerButtons"}>
         <div>Hello, {user.username}</div>
         <div className={"headerButton"}>
-        <Link to={"/user"}>
+        <Link to={`/user/${user._id}`}>
             <img src={userIcon} className="userButtonIcon"></img>
         </Link>
             <div className="headerButtonText">User</div>
         <div className={"headerButton"}></div>
         <Badge len={cart.length}/>
-        <Link to={"/cart"}>
+        <Link to={"/items/:userId/cart"}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
         <div className="headerButtonText">Cart</div>
@@ -87,7 +86,7 @@ Header.propTypes = {
 
     //location : PropTypes.string,
     cart : PropTypes.array,
-    user : PropTypes.object,
+    user : PropTypes.array,
 
 };
 
@@ -99,9 +98,11 @@ Badge.propTypes = {
 
 
 const mapStateToProps = (store) => {
+    console.log(store);
     return{
-        cart: store.cart
+        cart: store.cart,
+        user : store.user
     };
 };
 
-export default connect(mapStateToProps)(AuthConsumer(Header));
+export default connect(mapStateToProps)(Header);

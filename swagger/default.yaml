@@ -3,8 +3,88 @@ info:
   title: rakenduste-programmeerimine
   description: ""
   version: "1.0.0"
+servers:
+  - url: localhost:3000/api/v1
+security:
+  - bearerAuth: []
+
 paths:
-  /api/v1/login:
+
+  
+
+  /items/{itemId}:
+   get:
+      operationId: getItem
+      summary: Returns an item object
+      parameters:
+         - $ref: "#/components/parameters/itemIdParam"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+        403:
+          description: Forbidden
+        500:
+          description: Error
+
+  /users/{userId}:
+    get:
+      operationId: getUser
+      summary: Returns an user object
+      security:
+        - bearerAuth: []
+      parameters:
+         - $ref: "#/components/parameters/userIdParam"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        403:
+          description: Forbidden
+        500:
+          description: Error
+
+  /users/{userId}/cart/{itemId}:
+    put:
+      operationId: addItemToCart
+      summary: Adds an item to the cart
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/userIdParam"
+        - $ref: "#/components/parameters/itemIdParam"
+      responses:
+        200:
+          description: OK
+        403:
+          description: Forbidden
+        500:
+          description: err
+
+
+    delete:
+      operationId: removeItemFromCart
+      summary: Removes an item from the cart
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/userIdParam"
+        - $ref: "#/components/parameters/itemIdParam"
+      responses:
+        200:
+          description: OK
+        403:
+          description: Forbidden
+        500:
+          description: err
+
+  /login:
     post:
       operationId: login
       summary: User signs in
@@ -16,40 +96,37 @@ paths:
             schema:
               type: object
               properties:
-                username:
+                email:
                   type: string
                 password:
                   type: string
       responses:
         200:
           description: OK.
-          content: 
+          content:
             application/json:
               schema:
                 type: object
                 properties:
+                  token:
+                    type: string
                   user:
                     type: object
                     properties:
-                      _id:
-                        type: string
-                      username:
-                        type: string
                       email:
                         type: string
                       createdAt:
                         type: string
-                  token:
-                    type: string
-                        
+                      _id:
+                        type: string
         422:
           description: bad email or password
         401:
           description: unauthorized
-  /api/v1/signup:
+  /signup:
     post:
       operationId: signup
-      summary: User makes a new account
+      summary: User signs up
       description: ""
       requestBody:
         required: true
@@ -58,8 +135,6 @@ paths:
             schema:
               type: object
               properties:
-                username:
-                  type: string
                 email:
                   type: string
                 password:
@@ -71,4 +146,50 @@ paths:
           description: bad email or password
         401:
           description: unauthorized
-  
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Item:
+      type: object
+      properties:
+        _id:
+          type: string
+        createdAt:
+          type: string
+        price:
+          type: string
+        title:
+          type: string
+
+
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+        createdAt:
+          type: string
+        cart:
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+  parameters:
+    userIdParam:
+      in: path
+      name: userId
+      schema:
+        type: string
+      required:  true
+
+    itemIdParam:
+      in: path
+      name: itemId
+      schema:
+        type: string
+      required: true
