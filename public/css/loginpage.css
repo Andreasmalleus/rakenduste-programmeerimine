@@ -1,3 +1,5 @@
+
+
 .form-body{
     margin: 0;
     padding: 0;
@@ -8,7 +10,7 @@
     width: 25%;
     padding: 40px;
     text-align: center;
-    border: 5px solid black;
+    border: 1px solid gray;
     display: inline-block;
     background: whitesmoke;
   }

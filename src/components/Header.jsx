@@ -53,7 +53,7 @@ const unlogged = (cart) => {
         </div>
         <div className={"headerButton"}>
         <Badge len={cart.length}/>
-        <Link to={"/items/:userId/cart"}>
+        <Link to={"/items/notlogged/cart"}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
         <div className="headerButtonText">Cart</div>
@@ -73,7 +73,7 @@ const logged = (user, cart) => {
             <div className="headerButtonText">User</div>
         <div className={"headerButton"}></div>
         <Badge len={cart.length}/>
-        <Link to={"/items/:userId/cart"}>
+        <Link to={`/items/${user._id}/cart`}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
         <div className="headerButtonText">Cart</div>

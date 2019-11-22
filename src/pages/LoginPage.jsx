@@ -20,6 +20,14 @@ class LoginPage extends React.PureComponent{
 
     }
 
+    componentWillMount(){
+        document.body.style.backgroundImage = "url(/static/Images/skate.jpg)";
+    }
+    
+    componentWillUnmount(){
+        document.body.style.backgroundImage = null;
+    }
+
 
     //A promise is a mechanism for tracking a value that will be assigned some time in the future.
     //Promise is at the pending state at the beginning
@@ -67,6 +75,7 @@ class LoginPage extends React.PureComponent{
 
     render(){
         return(
+            <div className="login-body">
             <div className="form-body" onSubmit={this.handleSubmit.bind(this)}>
             <form className="box">
             <h1>Login</h1>
@@ -87,6 +96,7 @@ class LoginPage extends React.PureComponent{
             </div>
             <ToastContainer/>
             </form>
+            </div>
             </div>
             );
     }

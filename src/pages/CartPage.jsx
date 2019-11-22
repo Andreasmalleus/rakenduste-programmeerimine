@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../components/Header.jsx";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import "../../public/css/cartpage.css";
-import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import { removeItem } from "../store/actions.js";
@@ -41,7 +40,6 @@ class CartPage extends React.PureComponent{
                         <th>Name</th>
                         <th>Category</th>
                         <th>Price</th>
-                        <th>Total sum: {this.props.cart.map((item) => item.price).reduce((a,b) => a+b, 0)} $</th>
                     </tr>
                     <ToastContainer/>
                     {this.props.cart.map((item, index) => {
@@ -56,7 +54,12 @@ class CartPage extends React.PureComponent{
                         );
                     })}
                     </table>
-                    <FancyButton className="cart-button" handleClick={this.handleRedirect} text={"Continue to payment"}></FancyButton> 
+                    <div className="info-box">
+                    <div className="cart-total-sum">Total sum: {this.props.cart.map((item) => item.price).reduce((a,b) => a+b, 0)} $</div>
+                    <div className="checkout-button-container"> 
+                    <button className="checkout-button">Checkout</button>
+                    </div>
+                    </div>
                 </div>
                 </>
             );

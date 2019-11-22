@@ -15,8 +15,10 @@ class SignupPage extends React.PureComponent{
         };
 
     }
-
     
+    componentDidMount(){
+        document.body.style.backgroundImage = "url(/static/Images/skate.jpg)";
+    }
 
     handleChange = (event) => {
         //console.log(event.target.name, event.target.value);
@@ -35,8 +37,9 @@ class SignupPage extends React.PureComponent{
                 "Content-Type" : "application/json"
             },
             body : JSON.stringify(this.state)
-        }).then(result => {//needed to get resolved promise
-            return result.json();
+        }).then(res => {//needed to get resolved promise
+            if(!res.ok) throw "signup failed";
+            return res.json();
         }).then(data => { //then when promise is resolved
             console.log(data);
             toast.success("Successful signup" , {

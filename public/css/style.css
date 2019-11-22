@@ -25,6 +25,8 @@ a{
 }
 
 
+
+
 .item-name{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
@@ -50,6 +52,7 @@ a{
 .item-img{
     transition: transform .25s ease;
     width: 75%;
+
 }
 
 @media only screen and (max-width: 600px) {

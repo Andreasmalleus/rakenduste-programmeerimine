@@ -49,6 +49,23 @@ paths:
           description: Forbidden
         500:
           description: Error
+  /items:
+   get:
+      operationId: getItems
+      summary: Returns an array of objects which are items
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: "#/components/schemas/Item"
+        403:
+          description: Forbidden
+        500:
+          description: Error
 
   /users/{userId}/cart/{itemId}:
     put:
@@ -164,8 +181,7 @@ components:
           type: string
         title:
           type: string
-
-
+    
     User:
       type: object
       properties:
