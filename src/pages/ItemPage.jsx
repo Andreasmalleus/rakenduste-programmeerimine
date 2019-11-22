@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import { addItem } from "../store/actions.js";
 import {ToastContainer,toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import * as services from "../../server/services.js";
 
 
 
@@ -26,10 +26,7 @@ class ItemPage extends React.PureComponent{
     }
 
     fetchItem = () => {
-        fetch(`http://localhost:3000/api/v1/items/${this.props.match.params.itemId}`)
-        .then(results => {
-            return results.json();
-        })
+        return services.getItem({itemId: this.props.match.params.itemId})
         .then(item => {
             this.setState({
                 ...item

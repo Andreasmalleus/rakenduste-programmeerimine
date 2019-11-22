@@ -40,7 +40,7 @@ module.exports = {
     //use proxy to get rid of cors
     proxy : {
       "/api" : {
-        target : 'https://localhost:3000',
+        target : 'http://localhost:3000',
         changeOrigin: true
       }
       

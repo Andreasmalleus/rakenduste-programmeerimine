@@ -2,10 +2,8 @@ const express = require('express');
 const router = express();
 const {check, validationResult} = require('express-validator');
 const userController = require('./user.controller.js');
-const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const cors = require('cors');
 
 
 const validationMiddleware  = (req,res,next) => {
@@ -17,7 +15,7 @@ const validationMiddleware  = (req,res,next) => {
 }
 
 //Checking if user exists if not then create
-router.post("/login",cors(), userController.login);
+router.post("/login", userController.login);
 
 //Creating a user
 router.post("/signup",[check('email').isEmail().withMessage('Email must be correct'),
@@ -25,9 +23,9 @@ router.post("/signup",[check('email').isEmail().withMessage('Email must be corre
 check('password').not().isIn(['123', 'password1', 'parool1']).withMessage('Do not use a common word as the password').isLength({ min: 5 }).
 withMessage('Must be atleast 5 characters long').matches(/\d/).withMessage('must contain a number'),
 check('username').isLength({ min: 5 }).withMessage('Must be atleast 5 characters long').withMessage('Must be atleast 5 characters long')
-],validationMiddleware,cors(),userController.signup);
+],validationMiddleware,userController.signup);
 
-router.post("/verify",cors(),userController.verify);
+router.post("/verify",userController.verify);
     
       
         

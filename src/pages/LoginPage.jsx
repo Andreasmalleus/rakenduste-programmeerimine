@@ -8,6 +8,8 @@ import { tokenUpdate } from "../store/actions.js";
 import {ToastContainer,toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import * as services from "../../server/services.js";
+
 
 
 class LoginPage extends React.PureComponent{
@@ -33,16 +35,8 @@ class LoginPage extends React.PureComponent{
     //Promise is at the pending state at the beginning
     handleSubmit = (event) => {
         event.preventDefault();//dont refresh browser
-        fetch("http://localhost:3000/api/v1/auth/login", {
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json"
-            },
-            body : JSON.stringify(this.state),
-            
-        }).then(result => {//needed to get resolved promise
-            return result.json();
-        }).then(data => { 
+        services.login(this.state)
+        .then(data => { 
             //then when promise is resolved
             toast.success("Successful login" , {
                 autoClose : 1500, position: toast.POSITION.TOP_CENTER 

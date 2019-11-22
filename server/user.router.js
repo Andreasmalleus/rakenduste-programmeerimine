@@ -50,7 +50,7 @@ req.user.save( (err) => {
 });
 
 //Get all users
-router.get("/users", cors(),(req,res) => {
+router.get("/users",(req,res) => {
     User.find({},(err, users) => {
         if(err)return res.status(500);
         res.json(users)
@@ -58,7 +58,7 @@ router.get("/users", cors(),(req,res) => {
 })
 
 //Get user by id
-router.get("/users/:userId", cors(), (req,res) => {
+router.get("/users/:userId", (req,res) => {
     User.findById((req.params.userId), (err, user) => {
         if(err) return res.status(500)
         res.send(user);
@@ -66,7 +66,7 @@ router.get("/users/:userId", cors(), (req,res) => {
 });
 
 //Delete all users
-router.delete("/users", cors(), (req,res)=> {
+router.delete("/users", (req,res)=> {
     User.deleteMany({}, (err) => {
         if(err)return res.status(500);
     })

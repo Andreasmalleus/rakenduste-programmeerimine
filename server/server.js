@@ -6,9 +6,7 @@ const userRouter = require('./user.router.js');
 const authRouter = require('./auth.router.js');
 const bodyParser = require('body-parser');
 const connection = require('./connection.js');
-const cors = require('cors');
 
-app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api/v1/auth",authRouter);

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import propTypes from "prop-types";
 import {ToastContainer,toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import * as services from "../../server/services.js";
+
 
 class SignupPage extends React.PureComponent{
     constructor(props){
@@ -31,16 +33,8 @@ class SignupPage extends React.PureComponent{
         event.preventDefault();//dont refresh browser
         //console.log(this.state);
         //console.log(event);
-        fetch("http://localhost:3000/api/v1/auth/signup", {
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json"
-            },
-            body : JSON.stringify(this.state)
-        }).then(res => {//needed to get resolved promise
-            if(!res.ok) throw "signup failed";
-            return res.json();
-        }).then(data => { //then when promise is resolved
+        services.signup(this.state)
+        .then(data => { //then when promise is resolved
             console.log(data);
             toast.success("Successful signup" , {
                 autoClose : 1500, position: toast.POSITION.TOP_CENTER 
