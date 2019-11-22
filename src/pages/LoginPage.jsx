@@ -50,7 +50,7 @@ class LoginPage extends React.PureComponent{
             this.handleSuccess(data.user, data.token);
             if(typeof data != "undefined"){
                 //acts as a router and redirects if successful
-                this.props.history.push(`/user/${data.user._id}`);
+                this.props.history.push(`/users/${data.user._id}`);
             }
         }).catch(err => {
             console.log(err);

@@ -101,7 +101,7 @@ paths:
         500:
           description: err
 
-  /login:
+  /auth/login:
     post:
       operationId: login
       summary: User signs in
@@ -113,7 +113,7 @@ paths:
             schema:
               type: object
               properties:
-                email:
+                username:
                   type: string
                 password:
                   type: string
@@ -130,7 +130,7 @@ paths:
                   user:
                     type: object
                     properties:
-                      email:
+                      username:
                         type: string
                       createdAt:
                         type: string
@@ -140,7 +140,7 @@ paths:
           description: bad email or password
         401:
           description: unauthorized
-  /signup:
+  /auth/signup:
     post:
       operationId: signup
       summary: User signs up
@@ -153,6 +153,8 @@ paths:
               type: object
               properties:
                 email:
+                  type: string
+                username:
                   type: string
                 password:
                   type: string
@@ -191,9 +193,11 @@ components:
           type: string
         cart:
           type: array
-          items:
+        items:
             type: string
         email:
+          type: string
+        username:
           type: string
   parameters:
     userIdParam:

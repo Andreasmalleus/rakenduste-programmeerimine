@@ -58,7 +58,7 @@ router.get("/users", cors(),(req,res) => {
 })
 
 //Get user by id
-router.get("/user/:userId", cors(), (req,res) => {
+router.get("/users/:userId", cors(), (req,res) => {
     User.findById((req.params.userId), (err, user) => {
         if(err) return res.status(500)
         res.send(user);
