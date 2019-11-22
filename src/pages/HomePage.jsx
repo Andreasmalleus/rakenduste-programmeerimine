@@ -10,6 +10,8 @@ import {connect} from "react-redux";
 import {getItems} from "../store/actions.js";
 import PropTypes from "prop-types";
 
+import * as selectors from "../store/selectors.js";
+
 
 
 class HomePage extends React.PureComponent {
@@ -79,8 +81,7 @@ class HomePage extends React.PureComponent {
 
 const mapStateToProps = (store) => {
     return{
-        items: store.items,
-        error : store.error
+        items: selectors.getItems(store),
     };
 };
 

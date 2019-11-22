@@ -5,7 +5,7 @@ export const ITEMS_SUCCESS = "ITEMS_SUCCESS";
 export const ITEMS_FAILURE = "ITEMS_FAILURE";
 export const USER_UPDATE = "USER_UPDATE";
 export const TOKEN_UPDATE = "TOKEN_UPDATE";
-import * as services from "../../server/services.js";
+import * as services from "../../services.js";
 //action
 export const addItem = (item) => ({
     type : ITEM_ADDED,

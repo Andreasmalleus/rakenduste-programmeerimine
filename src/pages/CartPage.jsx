@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 import { removeItem } from "../store/actions.js";
 import {ToastContainer,toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import * as selectors from "../store/selectors.js";
+
 
 class CartPage extends React.PureComponent{
     constructor(props){
@@ -34,16 +36,17 @@ class CartPage extends React.PureComponent{
                 <>
                 <Header />
                 <div className={"cart-content"}>
-                <table className="product-table">
-                    <tr>
-                        <th>Product</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                    </tr>
-                    <ToastContainer/>
-                    {this.props.cart.map((item, index) => {
-                        return(
+                    <table className="product-table">
+                        <tbody>
+                            <tr>
+                                <th>Product</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                            </tr>
+                            <ToastContainer/>
+                            {this.props.cart.map((item, index) => {
+                            return(
                                 <tr key={index}>
                                     <td><img srcSet={item.imgSrc} className="cart-item-img"></img></td>
                                     <td className="cart-item-name">{item.title}</td>
@@ -51,15 +54,16 @@ class CartPage extends React.PureComponent{
                                     <td className="cart-item-price">{item.price + "$"}</td>
                                     <td><IoIosCloseCircleOutline className="cart-icon-img" onClick={()=> this.handleRemove(item._id)}/></td>
                                 </tr>
-                        );
-                    })}
+                            );
+                            })}
+                        </tbody>
                     </table>
                     <div className="info-box">
                     <div className="cart-total-sum">Total sum: {this.props.cart.map((item) => item.price).reduce((a,b) => a+b, 0)} $</div>
                     <div className="checkout-button-container"> 
-                    <button className="checkout-button">Checkout</button>
+                        <button className="checkout-button">Checkout</button>
                     </div>
-                    </div>
+                </div>
                 </div>
                 </>
             );
@@ -81,7 +85,7 @@ class CartPage extends React.PureComponent{
 
 const mapStateToProps = (store) => {
     return{
-        cart: store.cart
+        cart: selectors.getCart(store)
     };
 };
 

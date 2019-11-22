@@ -5,7 +5,7 @@ import "../../public/css/header.css";//possible because of css and style loader
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
-
+import * as selectors from "../store/selectors.js";
 
 
 const Header = ({user, cart}) => {
@@ -98,10 +98,9 @@ Badge.propTypes = {
 
 
 const mapStateToProps = (store) => {
-    console.log(store);
     return{
-        cart: store.cart,
-        user : store.user
+        cart: selectors.getCart(store),
+        user : selectors.getUser(store)
     };
 };
 

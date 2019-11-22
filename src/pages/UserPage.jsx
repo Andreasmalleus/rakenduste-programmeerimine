@@ -6,6 +6,8 @@ import propTypes from "prop-types";
 import {connect} from "react-redux";
 import FancyButton from "../components/FancyButton.jsx";
 import {userUpdate, tokenUpdate} from "../store/actions.js";
+import * as selectors from "../store/selectors.js";
+
 
 class UserPage extends React.PureComponent{
 
@@ -46,7 +48,7 @@ UserPage.propTypes = {
 
 const mapStateToProps = (store) => {
     return{
-        user : store.user
+        user : selectors.getUser(store)
     };
 };
 

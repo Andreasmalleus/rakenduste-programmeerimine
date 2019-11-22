@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import { addItem } from "../store/actions.js";
 import {ToastContainer,toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import * as services from "../../server/services.js";
+import * as services from "../../services.js";
 
 
 
