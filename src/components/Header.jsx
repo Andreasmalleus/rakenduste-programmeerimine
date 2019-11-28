@@ -33,7 +33,7 @@ const check = (user, cart) => {
 
 const Badge = (props) => {
     if(props.len != 0){
-    return(<span className="cart-counter">{props.len}</span>);
+    return(<span className="cart-counter"></span>);
     }else{
         return null;
     }
@@ -42,7 +42,7 @@ const Badge = (props) => {
 
 
 
-const unlogged = (cart) => {
+const unlogged = () => {
     return(
         <div className={"headerButtons"}>
         <div className={"headerButton"}>
@@ -52,7 +52,7 @@ const unlogged = (cart) => {
         <div className="headerButtonText">Login/Register</div>
         </div>
         <div className={"headerButton"}>
-        <Badge len={cart.length}/>
+        <Badge />
         <Link to={"/items/notlogged/cart"}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
@@ -62,7 +62,7 @@ const unlogged = (cart) => {
     );
 };
 
-const logged = (user, cart) => {
+const logged = (user) => {
     return (
         <div className={"headerButtons"}>
         <div>Hello, {user.username}</div>
@@ -72,7 +72,7 @@ const logged = (user, cart) => {
         </Link>
             <div className="headerButtonText">User</div>
         <div className={"headerButton"}></div>
-        <Badge len={cart.length}/>
+        <Badge/>
         <Link to={`/items/${user._id}/cart`}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
@@ -99,7 +99,6 @@ Badge.propTypes = {
 
 const mapStateToProps = (store) => {
     return{
-        cart: selectors.getCart(store),
         user : selectors.getUser(store)
     };
 };

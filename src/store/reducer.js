@@ -1,15 +1,13 @@
-import {ITEM_ADDED, ITEM_REMOVED, ITEMS_REQUEST, ITEMS_SUCCESS, ITEMS_FAILURE, USER_UPDATE, TOKEN_UPDATE} from "./actions.js";
+import {ITEM_ADDED,ITEMS_REQUEST, ITEMS_SUCCESS, ITEMS_FAILURE, USER_UPDATE, TOKEN_UPDATE} from "./actions.js";
 
 //initial state is an empty list
 const initialState = {
-    cart : [
-
-    ],
     items : [
 
     ],
     user : null,
-    token : null
+    token : null,
+    cart: []
 };
 
 //after action is dispatched it will be passed to the reducer 
@@ -18,16 +16,17 @@ const reducer = (state = initialState, action) => {
         case ITEM_ADDED:{
             return {
                 ...state,
-                cart: state.cart.concat([action.payload])//concates everytime a item is added
+                user: addItemToCart(state.user, action.payload) //concates everytime a item is added
             };
         }
+        /*
         case ITEM_REMOVED:{
             return {
                 ...state, 
                 cart : state.cart.filter(item => item._id !== action.payload)
                 //if doesnt equal the id then we get a new cart
             };
-        }
+        }*/
         case ITEMS_REQUEST:{
             return {
                 ...state, 
@@ -70,6 +69,13 @@ const reducer = (state = initialState, action) => {
             return state;
         }
     }
+};
+
+const addItemToCart = (user,itemId) => {
+    return{
+        ...user,
+        cart : user.cart.concat(itemId)
+    };
 };
 
 export default reducer;

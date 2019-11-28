@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express();
-const cors = require('cors');
 const models = require('../models/user.model.js');
 
 
@@ -23,19 +22,20 @@ router.param("itemId", (req, res, next, itemId) => {
 });
 
 //add item to cart
-router.put("/items/:userId/cart", (req, res) => {
+router.put("/users/:userId/cart/:itemId", (req, res) => {
+  console.log("hello");
     req.user.cart.push(req.item._id.toString());
     req.user.save( (err) => {
       if(err) {
         console.log(err);
         return res.status(500).send("Error cart save");
       }
-      res.send(req.user);
+      res.send(200);
     });
-  });
+});
 
 //delete item from cart
-router.delete("/items/:userId/cart", (req, res) => {
+router.delete("/:userId/cart", (req, res) => {
 
 const index = req.user.cart.findIndex(itemId => itemId === req.item._id.toString());
 req.user.cart.splice(index, 1);

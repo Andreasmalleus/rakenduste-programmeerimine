@@ -6,11 +6,25 @@ export const ITEMS_FAILURE = "ITEMS_FAILURE";
 export const USER_UPDATE = "USER_UPDATE";
 export const TOKEN_UPDATE = "TOKEN_UPDATE";
 import * as services from "../../services.js";
+import {getToken, getUser} from "../store/selectors.js";
+
 //action
-export const addItem = (item) => ({
-    type : ITEM_ADDED,
-    payload : item
-});
+export const addItem = (item) => (dispatch, getState) => {
+    const store = getState();
+    const itemId = item._id;
+    const token = getToken(store);
+    const userId = getUser(store)._id;
+    services.addItemToCart({itemId, token, userId})
+    .then( () => {
+      dispatch({
+        type: ITEM_ADDED,
+        payload: itemId,
+      });
+    })
+    .catch( err => {
+      console.log("err: ", err);
+    });
+};
 
 export const removeItem = (_id) => ({
     type : ITEM_REMOVED,

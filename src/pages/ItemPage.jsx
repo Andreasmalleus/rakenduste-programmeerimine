@@ -10,6 +10,8 @@ import { addItem } from "../store/actions.js";
 import {ToastContainer,toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as services from "../../services.js";
+import * as selectors from "../store/selectors.js";
+
 
 
 
@@ -38,6 +40,7 @@ class ItemPage extends React.PureComponent{
     }
 
     handleBuy = () => {
+        console.log(this.props.user);
         this.props.dispatch(addItem(this.state));
         toast.success("Item added to cart", {autoClose : 1500, position: toast.POSITION.TOP_CENTER});
     }
@@ -69,7 +72,17 @@ ItemPage.propTypes = {
     title : PropTypes.string,
     price : PropTypes.number,
     dispatch : PropTypes.func,
+    user : PropTypes.object,
+    token : PropTypes.string
 
 };
+
+const mapStateToProps = (store) => {
+    return{
+        user : selectors.getUser(store),
+        token : selectors.getToken(store)
+    };
+};
+
 //connects the component to the store
-export default connect()(ItemPage);
+export default connect(mapStateToProps)(ItemPage);
