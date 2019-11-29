@@ -22,8 +22,7 @@ const reducer = (state = initialState, action) => {
         case ITEM_REMOVED:{
             return {
                 ...state, 
-                cart : removeItemFromCart(state.user, action.payload)
-                //if doesnt equal the id then we get a new cart
+                user : removeItemFromCart(state.user, action.payload)
             };
         }
         case ITEMS_REQUEST:{

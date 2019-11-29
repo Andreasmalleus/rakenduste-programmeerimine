@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import * as selectors from "../store/selectors.js";
 
 
-const Header = ({user, cart}) => {
+const Header = ({user}) => {
     return (
                         <div className={"heading"}>
                         <Link to= {"/"}>
@@ -17,23 +17,32 @@ const Header = ({user, cart}) => {
                             </div>
                         </Link>
                         <div className={"headerButtons"}>
-                        {check(user, cart)}
+                        {check(user)}
                         </div>
                         </div>
     );
 };
-const check = (user, cart) => {
+const check = (user) => {
     if(user == null){
         console.log("hello");
-        return unlogged(cart);
+        return unlogged();
     }else{
-        return logged(user, cart);
+        return logged(user);
     }
 };
 
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        size++;
+    }
+    console.log(key);
+    return size;
+};
+
 const Badge = (props) => {
-    if(props.len != 0){
-    return(<span className="cart-counter"></span>);
+    if(props != null){
+        return(<span className="cart-counter">{Object.size(props.user.cart)}</span>);
     }else{
         return null;
     }
@@ -72,7 +81,7 @@ const logged = (user) => {
         </Link>
             <div className="headerButtonText">User</div>
         <div className={"headerButton"}></div>
-        <Badge/>
+        <Badge user={user}/>
         <Link to={`/users/${user._id}/cart`}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
@@ -86,7 +95,7 @@ Header.propTypes = {
 
     //location : PropTypes.string,
     cart : PropTypes.array,
-    user : PropTypes.array,
+    user : PropTypes.object,
 
 };
 
@@ -99,7 +108,8 @@ Badge.propTypes = {
 
 const mapStateToProps = (store) => {
     return{
-        user : selectors.getUser(store)
+        user : selectors.getUser(store),
+
     };
 };
 

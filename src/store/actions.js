@@ -63,7 +63,6 @@ export const getItems = () => {
         return services.getItems()
         .then(items => {
             dispatch(itemSuccess(items));
-            console.log(items);
         })
         .catch(err => {
             dispatch(itemsFailure(err));

@@ -9,18 +9,19 @@ import {ToastContainer,toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as selectors from "../store/selectors.js";
 import * as services from "../../services.js";
+import Modal from "../components/Modal.jsx";
 
 class CartPage extends React.PureComponent{
     constructor(props){
         super(props);
         this.state = {
             cartItems : [],
+            show : false
         };
     }
 
     componentDidMount() {
         this.fetchItems();
-        console.log(this.state.cartItems);
     }
 
     componentDidUpdate(prevProps) {
@@ -29,13 +30,20 @@ class CartPage extends React.PureComponent{
         if(currentCart !== previousCart){
             this.fetchItems();
         }
-        console.log(this.state.cartItems);
       }
 
     handleRemove = (_id) => {
         toast.success("Item removed from cart", {autoClose : 1500, position: toast.POSITION.TOP_CENTER});
         this.props.dispatch(removeItem(_id));
     }
+
+    handleModal = ()=> {
+        this.setState({
+                show : !this.state.show
+            });
+    }
+
+    
 
     handleRedirect = () => {
         console.log("to the payment page we go");
@@ -59,12 +67,13 @@ class CartPage extends React.PureComponent{
 
     
     render(){
-        if(this.props.cartItemIds.length != 0){
+        if(this.state.cartItems.length != 0){
             return(
                 <>
                 <Header />
                 <div className={"cart-content"}>
                 <ToastContainer/>
+                <Modal show={this.state.show} close={this.handleModal}>This is the message</Modal>
                     <table className="product-table">
                         <tbody>
                             <tr>
@@ -89,7 +98,7 @@ class CartPage extends React.PureComponent{
                     <div className="info-box">
                     <div className="cart-total-sum">Total sum: {this.state.cartItems.map((item) => item.price).reduce((a,b) => a+b, 0)} $</div>
                     <div className="checkout-button-container"> 
-                        <button className="checkout-button">Checkout</button>
+                        <button className="checkout-button" onClick={() => this.handleModal()}>Checkout</button>
                     </div>
                 </div>
                 </div>
