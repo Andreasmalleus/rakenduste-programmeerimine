@@ -36,9 +36,8 @@ export const addItemToCart = ({userId, itemId, token}) => {
       } 
      })
      .then(res => {
-         if(!res.ok) throw "addItemToCart failed";
-         return res.json();
-     });
+         console.log(res);
+     });    
 };
 
 export const removeItemFromCart = ({userId, itemId, token}) => {

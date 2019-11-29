@@ -26,7 +26,7 @@ class App extends React.PureComponent{
             <Route path="/users/:userId" exact component = {UserPage} />
             <Route path="/" exact component={HomePage} />
             <Route path="/items/:itemId" exact component={ItemPage} />
-            <Route path="/:userId/cart/:itemId" exact component={CartPage} />
+            <Route path="/users/:userId/cart" exact component={CartPage} />
             <Route exact component={NotFound}/>
             </Switch>
         </Router>

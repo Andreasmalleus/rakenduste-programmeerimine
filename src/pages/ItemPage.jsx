@@ -40,7 +40,7 @@ class ItemPage extends React.PureComponent{
     }
 
     handleBuy = () => {
-        console.log(this.props.user);
+        console.log(this.state);
         this.props.dispatch(addItem(this.state));
         toast.success("Item added to cart", {autoClose : 1500, position: toast.POSITION.TOP_CENTER});
     }

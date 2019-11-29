@@ -7,7 +7,6 @@ const initialState = {
     ],
     user : null,
     token : null,
-    cart: []
 };
 
 //after action is dispatched it will be passed to the reducer 
@@ -16,7 +15,7 @@ const reducer = (state = initialState, action) => {
         case ITEM_ADDED:{
             return {
                 ...state,
-                user: addItemToCart(state.user, action.payload) //concates everytime a item is added
+                user: addItemToCart(state.user,action.payload)
             };
         }
         /*

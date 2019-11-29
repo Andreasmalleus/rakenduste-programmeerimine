@@ -73,7 +73,7 @@ const logged = (user) => {
             <div className="headerButtonText">User</div>
         <div className={"headerButton"}></div>
         <Badge/>
-        <Link to={`/items/${user._id}/cart`}>
+        <Link to={`/users/${user._id}/cart`}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
         <div className="headerButtonText">Cart</div>

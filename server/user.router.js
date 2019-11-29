@@ -21,7 +21,7 @@ router.param("itemId", (req, res, next, itemId) => {
     });
 });
 
-//add item to cart
+//add item to cart 
 router.put("/users/:userId/cart/:itemId", (req, res) => {
   console.log("hello");
     req.user.cart.push(req.item._id.toString());
@@ -35,7 +35,7 @@ router.put("/users/:userId/cart/:itemId", (req, res) => {
 });
 
 //delete item from cart
-router.delete("/:userId/cart", (req, res) => {
+router.delete("/users/:userId/cart/:itemId", (req, res) => {
 
 const index = req.user.cart.findIndex(itemId => itemId === req.item._id.toString());
 req.user.cart.splice(index, 1);
