@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import * as selectors from "../store/selectors.js";
 import * as services from "../../services.js";
 import Modal from "../components/Modal.jsx";
+import Stripe from "../components/Stripe.jsx";
 
 class CartPage extends React.PureComponent{
     constructor(props){
@@ -73,7 +74,9 @@ class CartPage extends React.PureComponent{
                 <Header />
                 <div className={"cart-content"}>
                 <ToastContainer/>
-                <Modal show={this.state.show} close={this.handleModal}>This is the message</Modal>
+                <Modal show={this.state.show} close={this.handleModal}>This is the message
+                <Stripe/>
+                </Modal>
                     <table className="product-table">
                         <tbody>
                             <tr>

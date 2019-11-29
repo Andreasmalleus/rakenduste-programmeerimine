@@ -10,7 +10,9 @@ const Modal = (props) => {
             <div className="modal">
                 <div className="inner-modal">
                       {props.children}
-                      <IoMdClose onClick={props.close} className="modal-button"/>
+                      <div className="modal-button">
+                      <IoMdClose onClick={props.close} className="modal-icon"/>
+                      </div>
                 </div>
             </div>
           );
