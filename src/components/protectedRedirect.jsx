@@ -1,14 +1,18 @@
 import React from "react";
 import propTypes from "prop-types";
+import { Redirect } from "react-router";
 
 
-const protectedRedirect = (WrappedComponent) => {
+const ProtectedRedirect = (WrappedComponent) => {
     return class extends React.PureComponent{
         static displayName= "protectedRedirect-hoc";
         static propTypes = {
             user : propTypes.string
         }
         render(){
+                if(this.props.user.username == null){
+                    return <Redirect to="/home/"/>;
+                }
 
                     return <WrappedComponent {...this.props}/>;
                 }
@@ -17,4 +21,4 @@ const protectedRedirect = (WrappedComponent) => {
 
 
 
-export default protectedRedirect;
+export default ProtectedRedirect;

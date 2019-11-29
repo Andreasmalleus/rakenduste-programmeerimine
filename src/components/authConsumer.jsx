@@ -3,7 +3,7 @@ import { AuthContext } from "./App.jsx";
 //hoc basically is a function that takes a component and passes data to it or enhances the original in some way
 //in this particular function we use context
 //context is basically a global variable of some sort
-const authConsumer = (WrappedComponent) => {
+const AuthConsumer = (WrappedComponent) => {
     return class extends React.PureComponent{
         static displayName = "authconsumer-hoc";
         render(){
@@ -22,4 +22,4 @@ const authConsumer = (WrappedComponent) => {
 };
 
 
-export default authConsumer;
+export default AuthConsumer;

@@ -7,11 +7,25 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'static/bundle.js'
   },
   plugins: [
     new CopyPlugin([
-      {from: 'public'}
+      {
+        from: 'public/index.html'
+      }
+    ]),
+    new CopyPlugin([
+      {
+        from: 'public/Images',
+        to: 'static/Images'
+      }
+    ]),
+    new CopyPlugin([
+      {
+        from: 'public/css',
+        to : 'static/css'
+  }
     ]),
     new CleanWebpackPlugin(),
   ],
@@ -40,8 +54,7 @@ module.exports = {
         loader : 'eslint-loader',
         options: {
           //if necessary
-        },
-
+        },  
 
       },
       {
@@ -55,6 +68,17 @@ module.exports = {
       {
         test: /\.css$/i,
         use : ['style-loader','css-loader'],//css loader loads css file and the style loader puts it in the head element
+      },
+
+      {
+        test: /\.(gif|jpe?g|png|woff|woff2)$/i,
+        use : [{
+          loader : 'file-loader',
+          options : {
+            outputPath : "static/fonts"
+          },
+        }],
+
       },
     ],
   },

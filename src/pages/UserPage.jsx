@@ -1,8 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import "../../public/css/userpage.css";
-import authConsumer from "../components/authConsumer.jsx";
-import protectedRedirect from "../components/protectedRedirect.jsx";
+import AuthConsumer from "../components/AuthConsumer.jsx";
+import ProtectedRedirect from "../components/ProtectedRedirect.jsx";
 import propTypes from "prop-types";
 import Header from "../components/Header.jsx"; 
 
@@ -27,7 +27,7 @@ class UserPage extends React.PureComponent{
     }
 }
 
-export default authConsumer(protectedRedirect(UserPage));
+export default AuthConsumer(ProtectedRedirect(UserPage));
 
 UserPage.propTypes = {
     user : propTypes.object,

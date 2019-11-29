@@ -9,6 +9,7 @@ const authRouter = require('./auth.router.js');
 const models = require('../models/item.model.js');
 const database = require("./database.js");
 const bodyParser = require('body-parser');
+const connection = require('./connection.js');
 
 
 app.use(bodyParser.json());
@@ -16,6 +17,10 @@ app.use(bodyParser.json());
 app.use("/api/v1/auth",authRouter);
 app.use("/api/v1/",userRouter);
 app.use("/api/v1/",itemRouter);
+
+app.use("/static", express.static("dist/static"));//for images and css
+
+app.use("/*", express.static("dist"));//for index.html
 
 //vastavad otspunktid
 app.get('/', cors(),(req, res) => {
@@ -49,7 +54,7 @@ app.get('/cart', cors(),(req, res) => {
 
 app.use(express.static('dist'));
 
-models.connectDb().then(async () =>{
+connection.connectDb().then(async () =>{
     app.listen(port, () => {
         console.log(`Our app is running on port ${ port }`);
         console.log(`http://localhost:${ port }`);

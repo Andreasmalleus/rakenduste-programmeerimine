@@ -1,4 +1,3 @@
-
 .heading {
     background-color: whitesmoke;
     position: sticky;
@@ -9,25 +8,26 @@
     margin-top: -20px;
     margin-left: -20px;
     margin-right: -20px;
+    border: 1px solid grey;
 }
 body{
     position: relative;
+    overflow-x: hidden;
 }
-
-
 .logo-img{
-    width: 700px;
-    height: 700px;
-    display: block;
-    margin-top: -212.5px;
-    margin-left: 800px;
-    position: absolute;
 }
+
+.logo{
+    margin-left: 50px;
+    margin-top: 25px;
+}
+
+
 
 .headerButtons {
     display: flex;
     width: 250px;
-    margin-top: 30px;
+    margin-top: 15px;
 
 }
 .headerButtonText{
@@ -45,3 +45,12 @@ body{
     height: 100px;
 }
 
+.cart-counter{
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    background-color: black;
+    border-radius: 50px;
+    color: white;
+    text-align: center;
+}

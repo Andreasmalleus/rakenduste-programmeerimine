@@ -2,69 +2,78 @@ import React from "react";
 import Header from "../components/Header.jsx";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import "../../public/css/cartpage.css";
+import FancyButton from "../components/FancyButton.jsx";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+import { removeItem } from "../store/store.js";
+
 
 class CartPage extends React.PureComponent{
     constructor(props){
         super(props);
         this.state = {
-            items : []
+            cart : [...props.cart]
         };
     }
 
-    componentDidMount(){
-        this.fetchItems();
+
+    handleRemove = (_id) => {
+        this.props.dispatch(removeItem(_id));
+
     }
 
-    handleClick = () => {
+    handleRedirect = () => {
         console.log("to the payment page we go");
-    }
-
-    fetchItems = () => {
-        fetch("http://localhost:3000/api/v1/items")
-        .then(results => {
-            console.log("results");
-            return results.json();
-        })
-        .then(items => {
-            console.log("items", items);
-            items = items.slice(0,3).map((item)=> {return item});
-            this.setState({
-                items
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
     }
 
     
     render(){
-        return(
-            <>
-            <Header />
-            <div className={"content"}>
-            <button className="cart-button" onClick={this.handleClick.bind(this)}>Continue to payment</button>
-            <h1 className="title">Cart page and sum is: {this.state.items.map((item) => item.price).reduce((a,b) => a+b, 0)}</h1>
-                {this.state.items.map((item, index) => {
-                    return(
-                        <div className="item" key={index}>
-                            <img srcSet={item.imgSrc} className="item-img"></img>
-                            <div className="item-name">{item.title}</div>
-                            <div className="item-price">{item.price + " $"}</div>
-                            <div className="item-remove">
-                                <IoIosCloseCircleOutline style={{width:"50px", height:"50px"}} />
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-            </>
-        );
+        if(this.props.cart.length != 0){
+            return(
+                <>
+                <Header />
+                <div className={"cart-content"}>
+                <table className="product-table">
+                    <tr>
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Total sum: {this.props.cart.map((item) => item.price).reduce((a,b) => a+b, 0)}</th>
+                    </tr>
+                    {this.props.cart.map((item, index) => {
+                        return(
+                                <tr key={index}>
+                                    <td><img srcSet={item.imgSrc} className="item-img"></img></td>
+                                    <td className="item-name">{item.title}</td>
+                                    <td className="item-category">{item.category}</td>
+                                    <td className="item-price">{item.price + "$"}</td>
+                                    <td><IoIosCloseCircleOutline className="icon-img" onClick={()=> this.handleRemove(item._id)}/></td>
+                                </tr>
+                        );
+                    })}
+                    </table>
+                    <FancyButton className="cart-button" handleClick={this.handleRedirect} text={"Continue to payment"}></FancyButton> 
+                </div>
+                </>
+            );
+        }else{
+            return(
+                <>
+                 <Header />
+                 <div className="empty-cart-text">You have no items in your cart</div>
+                </>
+            );
+        }
     }
-
-
 }
-
-
-
-export default CartPage;
+const mapStateToProps = (store) => {
+    return{
+        cart: store.cart
+    };
+};
+CartPage.propTypes= {
+    cart : PropTypes.arr,
+    dispatch : PropTypes.func
+};
+export default connect(mapStateToProps)(CartPage);

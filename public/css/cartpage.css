@@ -1,4 +1,4 @@
-.content{
+.cart-content{
     margin-top: 50px;
     display: flex;
 }
@@ -14,10 +14,57 @@
     font-size: 30px;
     color: black;
     text-overflow: ellipsis;
+    text-align: center;
+    width: 1000px;
+    display: block;
+
+
 }
-.item-price{
+.fancy-button{
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 5px 10px;
+    
+}
+.button-inner{
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Coda', cursive;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+.arrow-icon{
+    height: 32px;
+}
+
+.td{
+    padding: 5px;
+}
+
+.item-name, .item-price, .item-category, th{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
     color: black;
     text-overflow: ellipsis;
 }
+
+.product-table{
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.icon-img{
+    width: 30px;
+    height: 30px;
+}
+
+.empty-cart-text{
+    text-align: center; /* align vertical */
+    margin-top: 400px;
+    font-size: 80px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+

@@ -8,6 +8,8 @@ import SignupPage from "../pages/SignupPage.jsx";
 import UserPage from "../pages/UserPage.jsx";
 import NotFound from "../NotFound.jsx";
 import CartPage from "../pages/CartPage.jsx";
+//import {HomePage, ItemPage, IntroPage, LoginPage, SignupPage, UserPage, NotFound, CartPage} from "../../modules/Barrel.js";
+
 
 export const AuthContext = React.createContext(null); 
 

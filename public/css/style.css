@@ -1,19 +1,22 @@
-
 a:link {
     text-decoration: none;
   }
 
 .content {
     display: flex;
+    flex-wrap: wrap;    
+    justify-content: center;
     text-align: center;
-    flex-wrap: wrap;
-    width: 100%;
-    margin: 0 auto;
-    
+
 }
+
+
 
 .item {
     padding: 5%;
+    width: 300px;
+    height: 300px;
+    margin: 10%;
 }
 
 .item:hover img{
@@ -30,6 +33,7 @@ a{
     font-size: 30px;
     color: black;
     text-overflow: ellipsis;
+    text-align: center;
 }
 
 

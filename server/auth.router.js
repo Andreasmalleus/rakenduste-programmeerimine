@@ -21,8 +21,7 @@ router.post("/signup",userController.signup);
 
 router.post("/verify",userController.verify);
     
-        
-        
+      
         
     /*check('email').isEmail().withMessage('Email must be correct'),
     // password must be at least 5 chars long

@@ -6,6 +6,9 @@ import CategoryView from ".././components/CategoryView.jsx";
 import SortDropdown from ".././components/SortDropdown.jsx";
 //import {newClothesReede, hoodiesReede, shoesReede} from "./database.js";
 //import {newClothesEnd, hoodiesEnd, shoesEND} from "./database.js";
+import {connect} from "react-redux";
+import {getItems} from "../store/store.js";
+import PropTypes from "prop-types";
 
 
 
@@ -25,23 +28,10 @@ class HomePage extends React.PureComponent {
         }
 
     fetchItems  = () => {
-        fetch("http://localhost:3000/api/v1/items")
-        .then(results => {
-            console.log("results");
-            return results.json();
-        })
-        .then(items => {
-            console.log("items", items);
-            this.setState({
-                items
-            });
-        })
-        .catch(err => {
-            console.log("err", err);
-        });
-        
-
+        this.props.dispatch(getItems());
+    
     }
+
 
     //handle need to be in parent
     handleCategory = (value) =>{
@@ -59,7 +49,7 @@ class HomePage extends React.PureComponent {
     }
 
     setVisibleItems =() => {
-        return this.state.items
+        return this.props.items
         .filter(item => item.category === this.state.selectedCategory)
         .sort((a,b) => {
             switch(this.state.sortDirection){
@@ -70,11 +60,12 @@ class HomePage extends React.PureComponent {
     }
 
     showItemCount = () => {
-        return this.state.items.filter(item => item.category == this.state.selectedCategory).length;
+        return this.props.items.filter(item => item.category == this.state.selectedCategory).length;
     }
 
 
     render(){
+        console.log(this.props, "this is props");
     return (
         <>
         <Header />
@@ -88,4 +79,17 @@ class HomePage extends React.PureComponent {
     }
 }
 
-export default HomePage;
+const mapStateToProps = (store) => {
+    return{
+        items: store.items,
+        error : store.error
+    };
+};
+
+HomePage.propTypes = {
+    dispatch : PropTypes.func,
+    items : PropTypes.array
+};
+
+export default connect(mapStateToProps)(HomePage);
+
