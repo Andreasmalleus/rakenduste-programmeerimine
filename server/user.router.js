@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express();
-const models = require('../models/user.model.js');
+const userModels = require('../models/user.model.js');
+const itemModels = require('../models/item.model.js');
 
-
-const User = models.User;
+const User = userModels.User;
+const Item = itemModels.Item;
 
 router.param("userId", (req, res, next, userId) => {
     User.findById(userId, (err, user) => {
-      if(!err || !user) return res.status(500).send("Error user params");
+      if(!user) return res.status(500).send("Error user params");
       req.user = user;
       next();
     });
@@ -15,7 +16,7 @@ router.param("userId", (req, res, next, userId) => {
 
 router.param("itemId", (req, res, next, itemId) => {
     Item.findById(itemId, (err, item) => {
-      if(!err || !item) return res.status(500).send("Error item params");
+      if(!item) return res.status(500).send("Error item params");
       req.item = item;
       next();
     });
@@ -23,14 +24,14 @@ router.param("itemId", (req, res, next, itemId) => {
 
 //add item to cart 
 router.put("/users/:userId/cart/:itemId", (req, res) => {
-  console.log("hello");
+  console.log(req.user);
     req.user.cart.push(req.item._id.toString());
     req.user.save( (err) => {
       if(err) {
         console.log(err);
         return res.status(500).send("Error cart save");
       }
-      res.send(200);
+      return res.sendStatus(200);
     });
 });
 

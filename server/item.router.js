@@ -32,7 +32,7 @@ router.delete("/items/:itemId", (req,res) => {
 
 //Get an item by id
 router.get("/items/:itemId", (req,res) => {
-    Item.findById((req.params.itemId), (err, item) => {
+    Item.findById(req.params.itemId, (err, item) => {
         if(err) return console.log(err);
         res.send(item);
     });

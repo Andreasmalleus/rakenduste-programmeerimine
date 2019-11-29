@@ -1,4 +1,4 @@
-import {ITEM_ADDED,ITEMS_REQUEST, ITEMS_SUCCESS, ITEMS_FAILURE, USER_UPDATE, TOKEN_UPDATE} from "./actions.js";
+import {ITEM_ADDED, ITEM_REMOVED,ITEMS_REQUEST, ITEMS_SUCCESS, ITEMS_FAILURE, USER_UPDATE, TOKEN_UPDATE} from "./actions.js";
 
 //initial state is an empty list
 const initialState = {
@@ -18,14 +18,14 @@ const reducer = (state = initialState, action) => {
                 user: addItemToCart(state.user,action.payload)
             };
         }
-        /*
+        
         case ITEM_REMOVED:{
             return {
                 ...state, 
-                cart : state.cart.filter(item => item._id !== action.payload)
+                cart : removeItemFromCart(state.user, action.payload)
                 //if doesnt equal the id then we get a new cart
             };
-        }*/
+        }
         case ITEMS_REQUEST:{
             return {
                 ...state, 
@@ -74,6 +74,13 @@ const addItemToCart = (user,itemId) => {
     return{
         ...user,
         cart : user.cart.concat(itemId)
+    };
+};
+
+const removeItemFromCart = (user, itemId)=> {
+    return{
+        ...user,
+        cart : user.cart.filter(id =>  id !== itemId)
     };
 };
 

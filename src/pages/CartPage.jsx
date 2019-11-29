@@ -8,34 +8,63 @@ import { removeItem } from "../store/actions.js";
 import {ToastContainer,toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as selectors from "../store/selectors.js";
-
+import * as services from "../../services.js";
 
 class CartPage extends React.PureComponent{
     constructor(props){
         super(props);
         this.state = {
-            cart : [...props.cart]
+            cartItems : [],
         };
     }
 
+    componentDidMount() {
+        this.fetchItems();
+        console.log(this.state.cartItems);
+    }
+
+    componentDidUpdate(prevProps) {
+        const currentCart = this.props.cartItemIds.join("");
+        const previousCart = prevProps.cartItemIds.join("");
+        if(currentCart !== previousCart){
+            this.fetchItems();
+        }
+        console.log(this.state.cartItems);
+      }
 
     handleRemove = (_id) => {
         toast.success("Item removed from cart", {autoClose : 1500, position: toast.POSITION.TOP_CENTER});
         this.props.dispatch(removeItem(_id));
-
     }
 
     handleRedirect = () => {
         console.log("to the payment page we go");
     }
 
+    fetchItems = ()=>{
+        const promises = this.props.cartItemIds.map(
+            itemId =>
+            services.getItem({itemId}
+            ));
+            Promise.all(promises).then( items => {
+              this.setState({
+                cartItems: items,
+              });
+              
+            }).catch(err => {
+              console.log(err);
+              toast.error("Failed fetching items");
+            });
+    }
+
     
     render(){
-        if(this.props.cart.length != 0){
+        if(this.props.cartItemIds.length != 0){
             return(
                 <>
                 <Header />
                 <div className={"cart-content"}>
+                <ToastContainer/>
                     <table className="product-table">
                         <tbody>
                             <tr>
@@ -44,8 +73,7 @@ class CartPage extends React.PureComponent{
                                 <th>Category</th>
                                 <th>Price</th>
                             </tr>
-                            <ToastContainer/>
-                            {this.props.cart.map((item, index) => {
+                            {this.state.cartItems.map((item, index) => {
                             return(
                                 <tr key={index}>
                                     <td><img srcSet={item.imgSrc} className="cart-item-img"></img></td>
@@ -59,7 +87,7 @@ class CartPage extends React.PureComponent{
                         </tbody>
                     </table>
                     <div className="info-box">
-                    <div className="cart-total-sum">Total sum: {this.props.cart.map((item) => item.price).reduce((a,b) => a+b, 0)} $</div>
+                    <div className="cart-total-sum">Total sum: {this.state.cartItems.map((item) => item.price).reduce((a,b) => a+b, 0)} $</div>
                     <div className="checkout-button-container"> 
                         <button className="checkout-button">Checkout</button>
                     </div>
@@ -85,12 +113,15 @@ class CartPage extends React.PureComponent{
 
 const mapStateToProps = (store) => {
     return{
-        cart: selectors.getCart(store)
+        cartItemIds: selectors.getCart(store)
     };
 };
 
 CartPage.propTypes= {
     cart : PropTypes.arr,
+    cartItemIds : PropTypes.arr,
+    cartItems : PropTypes.arr,
+    map : PropTypes.func,
     dispatch : PropTypes.func
 };
 

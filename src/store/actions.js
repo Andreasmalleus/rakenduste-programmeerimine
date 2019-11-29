@@ -26,10 +26,22 @@ export const addItem = (item) => (dispatch, getState) => {
     });
 };
 
-export const removeItem = (_id) => ({
-    type : ITEM_REMOVED,
-    payload: _id
-});
+export const removeItem = (id) => (dispatch, getState) => {
+    const store = getState();
+    const itemId = id;
+    const token = getToken(store);
+    const userId = getUser(store)._id;
+    services.removeItemFromCart({itemId, token, userId})
+    .then( () => {
+      dispatch({
+        type: ITEM_REMOVED,
+        payload: itemId,
+      });
+    })
+    .catch( err => {
+      console.log("err: ", err);
+    });
+};
 
 export const itemsRequest = () => ({
     type : ITEMS_REQUEST

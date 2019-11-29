@@ -11,5 +11,5 @@ export const getItems = (store) => {
 };
 
 export const getCart = (store) => {
-    return store.cart;
+    return store.user.cart;
 };
