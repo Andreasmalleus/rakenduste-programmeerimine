@@ -75,7 +75,7 @@ class CartPage extends React.PureComponent{
                 <div className={"cart-content"}>
                 <ToastContainer/>
                 <Modal show={this.state.show} close={this.handleModal}>This is the message
-                <Stripe/>
+                <Stripe />
                 </Modal>
                     <table className="product-table">
                         <tbody>

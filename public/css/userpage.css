@@ -1,4 +1,23 @@
 .userContent{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.user-text{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 40px;
+    font-size: 25px;
+    
+}
+
+.user-container{
+    width: 25%;
+    padding: 40px;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 25px;
+    display: inline-block;
+    background: whitesmoke;
 }

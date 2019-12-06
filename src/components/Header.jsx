@@ -41,8 +41,10 @@ Object.size = function(obj) {
 };
 
 const Badge = (props) => {
-    if(props != null){
-        return(<span className="cart-counter">{Object.size(props.user.cart)}</span>);
+    if(props.user != null){
+        return(
+        <span className="cart-counter">{Object.size(props.user.cart)}</span>
+        );
     }else{
         return null;
     }
@@ -61,7 +63,7 @@ const unlogged = () => {
         <div className="headerButtonText">Login/Register</div>
         </div>
         <div className={"headerButton"}>
-        <Badge />
+        <Badge user={null}/>
         <Link to={"/items/notlogged/cart"}>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
@@ -79,10 +81,9 @@ const logged = (user) => {
         <Link to={`/users/${user._id}`}>
             <img src={userIcon} className="userButtonIcon"></img>
         </Link>
-            <div className="headerButtonText">User</div>
         <div className={"headerButton"}></div>
-        <Badge user={user}/>
         <Link to={`/users/${user._id}/cart`}>
+        <Badge user={user}/>
         <img src={cartIcon} className="headerButtonIcon"></img>
         </Link>
         <div className="headerButtonText">Cart</div>

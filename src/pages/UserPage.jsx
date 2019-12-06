@@ -22,12 +22,17 @@ class UserPage extends React.PureComponent{
         return(
 
                     <div className="userContent">
+                        <div className="user-container">
+                    <div>
+                        <img srcSet="/static/Images/user-img.png"/>
+                    </div>
+                    <div className="user-text">You are logged in as {this.props.user.username}</div>
+                    <div className="user-text">{this.props.user.email}</div>
+                    <FancyButton handleClick={this.handleLogout} text="Logout"/>
                     <Link to={"/"}>
                         <div>Go back home</div>
-                    </Link>
-                    <div>{this.props.user.username}</div>
-                    <div>{this.props.user.email}</div>
-                    <FancyButton handleClick={this.handleLogout} text="Logout"/>  
+                    </Link>  
+                        </div>
                     </div>
         );
     }

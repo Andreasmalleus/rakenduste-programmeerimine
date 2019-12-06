@@ -81,3 +81,17 @@ export const signup = ({email, username, password}) => {
      });
 };
 
+export const checkout = ({token, userId}) => {
+    return fetch(`${basePath}/${userId}/checkout`,{
+        method : "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body : JSON.stringify(token),
+    })
+    .then(res  => {
+        if(!res.ok) throw "checkout failed";
+        console.log(res);
+    });
+};
+

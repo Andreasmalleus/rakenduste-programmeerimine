@@ -13,3 +13,9 @@ export const getItems = (store) => {
 export const getCart = (store) => {
     return store.user.cart;
 };
+
+export const getUserId = (store) => {
+    if(!store.user) return null;
+    return store.user._id;
+};
+

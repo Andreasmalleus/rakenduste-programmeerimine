@@ -22,6 +22,12 @@ router.param("itemId", (req, res, next, itemId) => {
     });
 });
 
+router.post("/:userId/checkout", async (req,res) => {
+    const amount = await req.user.getCartAmount();
+    console.log(amount);  
+    res.send(200);
+});
+
 //add item to cart 
 router.put("/users/:userId/cart/:itemId", (req, res) => {
   console.log(req.user);
@@ -72,5 +78,6 @@ router.delete("/users", (req,res)=> {
         if(err)return res.status(500);
     })
 })
+
 
 module.exports = router;

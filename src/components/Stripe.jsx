@@ -4,6 +4,9 @@ import {CardElement} from "react-stripe-elements";
 import {Elements} from "react-stripe-elements";
 import {injectStripe} from "react-stripe-elements";
 import PropTypes from "prop-types";
+import * as services from "../../services.js";
+import * as selectors from "../store/selectors.js";
+import {connect} from "react-redux";
 
 
 
@@ -24,8 +27,16 @@ class checkoutForm extends React.PureComponent{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.stripe.createToken().then(function(result){
+        this.props.stripe.createToken().then((result)=>{
             console.log(result);
+            console.log(this.props.userId);
+            services.checkout({token : result, userId : this.props.userId})
+            .then(result => {
+                console.log("checkout",result);
+            })
+            .catch(err => {
+                console.log(err);
+            });
         });
 
     }
@@ -46,12 +57,18 @@ Stripe.propTypes= {
 };
 
 checkoutForm.propTypes= {
-    stripe : PropTypes.obj,
+    stripe : PropTypes.func,
     createToken : PropTypes.func,
+    userId : PropTypes.string
 
 };
 
-const InjectedForm = injectStripe(checkoutForm);
+const mapStateToProps = (store) => {
+    return{
+        userId: selectors.getUserId(store)
+    };
+};
 
+const InjectedForm = connect(mapStateToProps)(injectStripe(checkoutForm));
 
 export default Stripe;
