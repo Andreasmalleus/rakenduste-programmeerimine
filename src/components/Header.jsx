@@ -24,7 +24,6 @@ const Header = ({user}) => {
 };
 const check = (user) => {
     if(user == null){
-        console.log("hello");
         return unlogged();
     }else{
         return logged(user);
