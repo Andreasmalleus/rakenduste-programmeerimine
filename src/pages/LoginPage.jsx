@@ -33,28 +33,18 @@ class LoginPage extends React.PureComponent{
 
     //A promise is a mechanism for tracking a value that will be assigned some time in the future.
     //Promise is at the pending state at the beginning
+
     handleSubmit = (event) => {
-        event.preventDefault();//dont refresh browser
-        services.login(this.state)
-        .then(data => { 
-            //then when promise is resolved
-            toast.success("Successful login" , {
-                autoClose : 1500, position: toast.POSITION.TOP_CENTER 
-            });
-            this.handleSuccess(data.user, data.token);
-            if(typeof data != "undefined"){
-                //acts as a router and redirects if successful
-                this.props.history.push(`/users/${data.user._id}`);
-            }
-        }).catch(err => {
-            toast.error("Unsuccessful login" , {
-                autoClose : 1500, position: toast.POSITION.TOP_CENTER 
-            });
-            console.log(err);
-            
+        toast.error("Unsuccessful login" , {
+            autoClose : 1500, position: toast.POSITION.TOP_CENTER 
         });
-        
-    }
+        event.preventDefault();
+        services.login(this.state)
+        .then(this.handleSuccess)
+        .catch(err =>{
+          console.log(err);
+        });
+      };
 
     handleChange = (event) => {
         //console.log(event.target.name, event.target.value);
@@ -63,9 +53,13 @@ class LoginPage extends React.PureComponent{
         });
     }
 
-    handleSuccess = (user, token) => {
+    handleSuccess = ({token,user}) => {
+        toast.success("Successful login" , {
+            autoClose : 3000, position: toast.POSITION.TOP_CENTER 
+        });
         this.props.dispatch(userUpdate(user));
         this.props.dispatch(tokenUpdate(token));
+        this.props.history.push(`/users/${user._id}`);
     }
 
     render(){

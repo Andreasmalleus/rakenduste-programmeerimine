@@ -31,21 +31,18 @@ class SignupPage extends React.PureComponent{
 
     handleSubmit = (event) => {
         event.preventDefault();//dont refresh browser
+        toast.error("Unsuccessful signup ", {
+            autoClose : 1500, position: toast.POSITION.TOP_CENTER 
+        });
         //console.log(this.state);
         //console.log(event);
         services.signup(this.state)
-        .then(data => { //then when promise is resolved
-            console.log(data);
+        .then( () => { //then when promise is resolved
             toast.success("Successful signup" , {
                 autoClose : 1500, position: toast.POSITION.TOP_CENTER 
             });
-            if(typeof data != "undefined"){
-                this.props.history.push("/login");
-            }
+            this.props.history.push("/login");
         }).catch(err => {
-            toast.error("Unsuccessful signup", {
-                autoClose : 1500, position: toast.POSITION.TOP_CENTER 
-            });
             console.log(err);
 
         });

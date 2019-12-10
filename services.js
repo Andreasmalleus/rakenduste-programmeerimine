@@ -3,7 +3,7 @@ const basePath = "api/v1";
 export const getItems = () => {
     return fetch(`${basePath}/items`)
     .then(res => {
-        if(!res.ok) throw "getItems failed";
+        if(!res.ok) throw "GetItems failed";
         return res.json();
     });
 };
@@ -11,7 +11,7 @@ export const getItems = () => {
 export const getItem = ({itemId}) => {
     return fetch(`${basePath}/items/${itemId}`)
     .then(res => {
-        if(!res.ok) throw "getItem failed";
+        if(!res.ok) throw "GetItem failed";
         return res.json();
     });
 };
@@ -23,7 +23,7 @@ export const getUser = ({userId, token}) => {
      } 
     })
     .then(res => {
-        if(!res.ok) throw "getUser failed";
+        if(!res.ok) throw "GetUser failed";
         return res.json();
     });
 };
@@ -48,7 +48,7 @@ export const removeItemFromCart = ({userId, itemId, token}) => {
       } 
      })
      .then(res => {
-         if(!res.ok) throw "removeItemFromCart failed";
+         if(!res.ok) throw "RemoveItemFromCart failed";
          return res.json();
      });
 };
@@ -62,7 +62,7 @@ export const login = ({username, password}) => {
         body : JSON.stringify({username, password}),
      })
      .then(res => {
-         if(!res.ok) throw "login failed";
+         if(!res.ok) throw "Login failed";
          return res.json();
      });
 };
@@ -76,7 +76,7 @@ export const signup = ({email, username, password}) => {
         body : JSON.stringify({email,username,password}),
      })
      .then(res => {
-         if(!res.ok) throw "login failed";
+         if(!res.ok) throw "Registration failed";
          return res.json();
      });
 };
