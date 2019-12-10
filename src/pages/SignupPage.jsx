@@ -39,14 +39,15 @@ class SignupPage extends React.PureComponent{
             toast.success("Successful signup" , {
                 autoClose : 1500, position: toast.POSITION.TOP_CENTER 
             });
-            if(typeof data!= "undefined"){
+            if(typeof data != "undefined"){
                 this.props.history.push("/login");
             }
         }).catch(err => {
-            console.log(err);
-            toast.error("Unsuccessful signup" , {
+            toast.error("Unsuccessful signup", {
                 autoClose : 1500, position: toast.POSITION.TOP_CENTER 
             });
+            console.log(err);
+
         });
     }
 

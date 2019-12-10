@@ -47,10 +47,11 @@ class LoginPage extends React.PureComponent{
                 this.props.history.push(`/users/${data.user._id}`);
             }
         }).catch(err => {
-            console.log(err);
             toast.error("Unsuccessful login" , {
                 autoClose : 1500, position: toast.POSITION.TOP_CENTER 
             });
+            console.log(err);
+            
         });
         
     }
