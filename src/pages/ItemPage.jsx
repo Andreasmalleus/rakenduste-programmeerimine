@@ -45,6 +45,18 @@ class ItemPage extends React.PureComponent{
         toast.success("Item added to cart", {autoClose : 1500, position: toast.POSITION.TOP_CENTER});
     }
 
+    showButton = () => {
+        if(this.props.user != null){
+            {
+                return (
+                    <FancyButton handleClick={this.handleBuy} text="Add to cart"/>
+                );
+            }
+        }else{
+            return null;
+        }
+    }
+
     render(){
         //console.log("match", this.props.match);
         //console.log(this.state);
@@ -56,7 +68,7 @@ class ItemPage extends React.PureComponent{
                 <img src={this.state.imgSrc} className="itemPage-img"></img>
                 <h1 className="itemPage-name">{this.state.title}</h1>
                 <h1 className="itemPage-price">{this.state.price + " $"}</h1>
-                <FancyButton handleClick={this.handleBuy} text="Add to cart"/>      
+                {this.showButton()}   
                 <ToastContainer/>  
             </div>
         </>

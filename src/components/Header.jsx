@@ -61,13 +61,6 @@ const unlogged = () => {
         </Link> 
         <div className="headerButtonText">Login/Register</div>
         </div>
-        <div className={"headerButton"}>
-        <Badge user={null}/>
-        <Link to={"/items/notlogged/cart"}>
-        <img src={cartIcon} className="headerButtonIcon"></img>
-        </Link>
-        <div className="headerButtonText">Cart</div>
-        </div>
         </div>
     );
 };
