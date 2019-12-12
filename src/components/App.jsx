@@ -8,6 +8,7 @@ import SignupPage from "../pages/SignupPage.jsx";
 import UserPage from "../pages/UserPage.jsx";
 import NotFound from "../NotFound.jsx";
 import CartPage from "../pages/CartPage.jsx";
+import Form from "../../test/Form.jsx";
 //import {HomePage, ItemPage, IntroPage, LoginPage, SignupPage, UserPage, NotFound, CartPage} from "../../modules/Barrel.js";
 
 
@@ -27,6 +28,8 @@ class App extends React.PureComponent{
             <Route path="/" exact component={HomePage} />
             <Route path="/items/:itemId" exact component={ItemPage} />
             <Route path="/users/:userId/cart" exact component={CartPage} />
+            <Route path="/test" exact component={Form}/>
+            
             <Route exact component={NotFound}/>
             </Switch>
         </Router>

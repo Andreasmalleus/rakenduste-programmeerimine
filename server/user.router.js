@@ -23,8 +23,9 @@ router.param("itemId", (req, res, next, itemId) => {
 });
 
 router.post("/:userId/checkout", async (req,res) => {
+    console.log(req.user.getCartAmount());
     const amount = await req.user.getCartAmount();
-    console.log(amount);  
+    console.log(amount, "This is the cart amount");  
     res.send(200);
 });
 
